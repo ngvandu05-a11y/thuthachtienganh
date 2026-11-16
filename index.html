@@ -3,920 +3,1393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chúc Mừng Sinh Nhật Cẩm Tiên 💖✨</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Canvas Confetti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Tone.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-
-    <!-- Google Fonts -->
+    <title>Vương Quốc Tiếng Anh 3 - Bé Nguyễn Thị Cẩm Tiên</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pastel: {
-                            purple: '#e8dff5',
-                            pink: '#fce1e4',
-                            yellow: '#fcf4dd',
-                            blue: '#ddedf4',
-                            mint: '#ddf4e8'
-                        }
-                    },
-                    fontFamily: {
-                        dancing: ['Dancing Script', 'cursive'],
-                        comfortaa: ['Comfortaa', 'cursive'],
-                        nunito: ['Nunito', 'sans-serif'],
-                        pacifico: ['Pacifico', 'cursive'],
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
+        :root {
+            --primary: #FF477E;
+            --primary-dark: #D9265E;
+            --secondary: #4CC9F0;
+            --accent: #FFD166;
+            --success: #06D6A0;
+            --bg-gradient: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 50%, #A1C4FD 100%);
+        }
+
         * {
+            box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #e8dff5 0%, #fce1e4 40%, #ddedf4 100%);
-            overflow-x: hidden;
+            font-family: 'Nunito', 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             min-height: 100vh;
+            margin: 0;
+            color: #2B2D42;
+            overflow-x: hidden;
         }
 
-        /* Sparkles & floating elements */
-        .sparkle {
-            position: absolute;
-            pointer-events: none;
-            animation: floatUp linear infinite;
+        /* Hiệu ứng kẹo ngọt 3D */
+        .candy-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 12px 30px rgba(217, 38, 94, 0.15), inset 0 -4px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.6); opacity: 0; }
-            20% { opacity: 0.9; }
-            80% { opacity: 0.9; }
-            100% { transform: translateY(-10vh) rotate(360deg) scale(1.2); opacity: 0; }
+        .candy-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 36px rgba(217, 38, 94, 0.25);
         }
 
-        /* Flame animation */
-        .flame {
-            width: 14px;
-            height: 22px;
-            background: linear-gradient(to bottom, #fff 0%, #ffeb3b 50%, #ff9800 100%);
-            border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 15px #ff9800, 0 0 25px #ff5722;
-            animation: flicker 0.6s infinite alternate ease-in-out;
+        .btn-candy {
+            border-radius: 20px;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            position: relative;
+            top: 0;
+            cursor: pointer;
+            user-select: none;
         }
 
-        @keyframes flicker {
-            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
-            100% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+        .btn-candy:active {
+            top: 4px;
+            box-shadow: none !important;
         }
 
-        .flame.extinguished {
-            display: none !important;
+        .btn-pink {
+            background: linear-gradient(180deg, #FF7096 0%, #FF477E 100%);
+            color: white;
+            box-shadow: 0 6px 0 #C9184A;
         }
 
-        .smoke {
-            display: none;
+        .btn-blue {
+            background: linear-gradient(180deg, #4CC9F0 0%, #4361EE 100%);
+            color: white;
+            box-shadow: 0 6px 0 #3A0CA3;
+        }
+
+        .btn-green {
+            background: linear-gradient(180deg, #06D6A0 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 6px 0 #047857;
+        }
+
+        .btn-yellow {
+            background: linear-gradient(180deg, #FFD166 0%, #F4A261 100%);
+            color: #2B2D42;
+            box-shadow: 0 6px 0 #E76F51;
+        }
+
+        .btn-option {
+            background: #FFFFFF;
+            border: 3px solid #E2E8F0;
+            box-shadow: 0 5px 0 #CBD5E1;
+            border-radius: 18px;
+            color: #1E293B;
+            font-weight: 800;
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-option:hover:not(:disabled) {
+            border-color: #4CC9F0;
+            background: #F0F9FF;
+            transform: translateY(-2px);
+        }
+
+        .btn-option:active:not(:disabled) {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #CBD5E1;
+        }
+
+        /* Bản đồ Candy Crush Saga Map */
+        .saga-container {
+            position: relative;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 20px 10px 80px;
+        }
+
+        .saga-node-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 18px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .saga-node {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.25rem;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 4px solid #FFF;
+        }
+
+        .node-locked {
+            background: linear-gradient(180deg, #CBD5E1 0%, #94A3B8 100%);
+            color: #F8FAFC;
+            box-shadow: 0 6px 0 #64748B;
+            cursor: not-allowed;
+        }
+
+        .node-current {
+            background: linear-gradient(180deg, #FF7096 0%, #FF0A54 100%);
+            color: #FFF;
+            box-shadow: 0 7px 0 #A4133C, 0 0 25px rgba(255, 10, 84, 0.6);
+            cursor: pointer;
+            animation: pulseNode 1.6s infinite;
+        }
+
+        .node-passed {
+            background: linear-gradient(180deg, #38B000 0%, #008000 100%);
+            color: #FFF;
+            box-shadow: 0 6px 0 #004B23;
+            cursor: pointer;
+        }
+
+        .node-failed-skip {
+            background: linear-gradient(180deg, #FFB703 0%, #FB8500 100%);
+            color: #FFF;
+            box-shadow: 0 6px 0 #B55D00;
+            cursor: pointer;
+        }
+
+        @keyframes pulseNode {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .animate-shake {
+            animation: shake 0.45s ease-in-out;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.85) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .animate-pop {
+            animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .heart-beat {
+            display: inline-block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .heart-lost {
+            filter: grayscale(100%);
+            opacity: 0.35;
+            transform: scale(0.8);
+        }
+
+        /* Thanh cuộn mượt */
+        ::-webkit-scrollbar {
             width: 8px;
-            height: 20px;
-            background: rgba(200, 200, 200, 0.7);
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 10px;
-            animation: smokeUp 1.5s forwards ease-out;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF7096;
+            border-radius: 10px;
         }
 
-        @keyframes smokeUp {
-            0% { transform: translateY(0) scaleX(1); opacity: 0.8; }
-            100% { transform: translateY(-40px) scaleX(3); opacity: 0; }
+        .word-chip {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+            border: 2px solid #94A3B8;
+            box-shadow: 0 4px 0 #64748B;
+            border-radius: 14px;
+            padding: 8px 16px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            user-select: none;
         }
 
-        .progress-bar-fill {
-            transition: width 0.1s linear;
+        .word-chip:hover {
+            border-color: #FF477E;
+            color: #FF477E;
+            transform: translateY(-2px);
         }
 
-        .floating-bubble {
-            position: fixed;
-            bottom: -50px;
-            pointer-events: none;
-            animation: riseUp 5s linear forwards;
-            z-index: 40;
+        .word-chip:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #64748B;
         }
 
-        @keyframes riseUp {
-            0% { transform: translateY(0) scale(0.8); opacity: 1; }
-            100% { transform: translateY(-110vh) scale(1.3); opacity: 0; }
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 2px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 20px 40px rgba(186, 104, 200, 0.18);
-        }
-
-        /* Cake Intro Animations */
-        .cake-layer {
-            opacity: 0;
-            transform: translateY(-250px) scale(0.8);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .cake-layer.drop-in {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .candle-appear {
-            opacity: 0;
-            transform: translateY(-40px) scale(0.3);
-            transition: all 0.6s ease-out;
-        }
-
-        .candle-appear.show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        .word-chip.selected-chip {
+            background: #FF477E;
+            color: white;
+            border-color: #C9184A;
+            box-shadow: 0 4px 0 #800F2F;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center relative min-h-screen p-2 sm:p-4 text-gray-800">
+<body class="pb-10">
 
-    <!-- FLOATING BACKGROUND ELEMENTS -->
-    <div id="sparkles-container" class="fixed inset-0 pointer-events-none z-0"></div>
-
-    <!-- CANVAS PHÁO HOA & CONFETTI OVERLAY -->
-    <canvas id="fireworks-canvas" class="fixed inset-0 pointer-events-none z-30 w-full h-full"></canvas>
-
-    <!-- ==================== 1. GIAO DIỆN HIỆU ỨNG INTRO (BÁNH 3 TẦNG RƠI + NẾN SỐ 8) ==================== -->
-    <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 bg-gradient-to-br from-purple-950 via-indigo-950 to-pink-950 text-white transition-opacity duration-1000">
-        
-        <div class="text-center space-y-4 max-w-md w-full px-4 flex flex-col items-center">
-            
-            <div id="intro-title-area" class="space-y-2">
-                <div class="flex justify-center items-center space-x-2 text-yellow-300 text-3xl animate-bounce">
-                    <span>✨</span>
-                    <span>👑</span>
-                    <span>✨</span>
+    <!-- HEADER THÔNG TIN HỌC SINH -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="goHome()">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-yellow-400 flex items-center justify-center text-2xl shadow-md border-2 border-white">
+                    🍭
                 </div>
-                <h1 class="font-dancing text-4xl sm:text-5xl text-pink-300 drop-shadow-[0_4px_10px_rgba(255,182,193,0.8)] leading-tight">
-                    Món Quà Bí Mật!
-                </h1>
-                <p class="font-comfortaa text-sm text-pink-100/90">
-                    Bất ngờ đặc biệt dành riêng cho công chúa <br>
-                    <span class="font-bold text-yellow-300 text-lg underline decoration-wavy">Cẩm Tiên</span> tròn 8 tuổi! 🌸
-                </p>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-black text-pink-600 leading-tight">ENGLISH 3 ADVENTURE</h1>
+                    <p class="text-xs sm:text-sm font-bold text-slate-600">Học sinh: <span class="text-indigo-600 font-extrabold">Nguyễn Thị Cẩm Tiên</span> • Lớp <span class="text-pink-600 font-extrabold">3D</span></p>
+                </div>
             </div>
 
-            <!-- NÚT MỞ BẰNG BẮT ĐẦU HIỆU ỨNG -->
-            <button id="start-animation-btn" onclick="handleStartClick()" class="mt-4 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-2xl border-2 border-yellow-300 transform transition active:scale-95 text-base sm:text-lg animate-pulse">
-                🎁 Khám phá món quà ✨
-            </button>
-
-            <!-- KHU VỰC MÀN HÌNH ĐẾM NGƯỢC (HIỂN THỊ NẾU CHƯA ĐẾN GIỜ MỞ LINK) -->
-            <div id="countdown-box" class="hidden mt-6 w-full bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-pink-300/30 shadow-2xl">
-                <p class="text-sm font-comfortaa text-pink-200 mb-3 animate-pulse">
-                    ⏰ Quà bí mật sẽ tự động mở sau:
-                </p>
-                <div class="grid grid-cols-4 gap-2 text-center">
-                    <div class="bg-purple-900/60 p-2 rounded-xl border border-pink-400/30">
-                        <span id="cd-days" class="text-2xl font-black text-yellow-300 font-mono">00</span>
-                        <div class="text-[10px] text-pink-200 uppercase tracking-wider font-semibold">Ngày</div>
-                    </div>
-                    <div class="bg-purple-900/60 p-2 rounded-xl border border-pink-400/30">
-                        <span id="cd-hours" class="text-2xl font-black text-yellow-300 font-mono">00</span>
-                        <div class="text-[10px] text-pink-200 uppercase tracking-wider font-semibold">Giờ</div>
-                    </div>
-                    <div class="bg-purple-900/60 p-2 rounded-xl border border-pink-400/30">
-                        <span id="cd-minutes" class="text-2xl font-black text-yellow-300 font-mono">00</span>
-                        <div class="text-[10px] text-pink-200 uppercase tracking-wider font-semibold">Phút</div>
-                    </div>
-                    <div class="bg-purple-900/60 p-2 rounded-xl border border-pink-400/30">
-                        <span id="cd-seconds" class="text-2xl font-black text-pink-400 font-mono">00</span>
-                        <div class="text-[10px] text-pink-200 uppercase tracking-wider font-semibold">Giây</div>
-                    </div>
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="bg-amber-100 border-2 border-amber-300 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 shadow-inner">
+                    <span class="text-lg">⭐</span>
+                    <span id="total-stars-badge" class="font-black text-amber-700 text-sm sm:text-base">0 / 140</span>
                 </div>
-                <p class="text-xs text-yellow-200/80 italic mt-3 font-light">
-                    Hẹn gặp Cẩm Tiên vào đúng 00:00 ngày 12/11 nhé! 🎂💖
-                </p>
+                <button onclick="goHome()" id="btn-home-nav" class="hidden btn-candy btn-blue px-3.5 py-2 text-xs sm:text-sm flex items-center gap-1">
+                    🏠 Trang chủ
+                </button>
             </div>
+        </div>
+    </header>
 
-            <!-- KHU VỰC HIỆN BÁNH VÀ NẾN INTRO -->
-            <div id="cake-animation-container" class="hidden relative my-6 flex-col items-center justify-end h-64 w-80">
-                
-                <!-- Nến Số 8 -->
-                <div id="intro-candle" class="candle-appear flex flex-col items-center z-30 mb-[-6px]">
-                    <div id="intro-flame" class="flame opacity-0 transition-opacity duration-500"></div>
-                    <div class="w-6 h-14 bg-gradient-to-b from-yellow-300 via-pink-500 to-purple-600 rounded-t-md shadow-lg border border-white flex items-center justify-center font-bold text-base text-white">8</div>
-                </div>
-
-                <!-- Tầng 3 (Tầng đỉnh) -->
-                <div id="layer-3" class="cake-layer w-36 h-14 bg-gradient-to-r from-purple-300 via-pink-200 to-purple-300 rounded-t-2xl relative border-b-4 border-purple-400 shadow-md flex items-center justify-center z-20">
-                    <div class="absolute top-0 w-full flex justify-around text-white/90 text-xs">
-                        <span>🌸</span><span>🍓</span><span>🌸</span>
-                    </div>
-                </div>
-
-                <!-- Tầng 2 (Tầng giữa) -->
-                <div id="layer-2" class="cake-layer w-52 h-16 bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 rounded-t-2xl relative border-b-4 border-purple-400 shadow-md flex items-center justify-around px-4 z-10">
-                    <span class="text-base">🎀</span>
-                    <span class="text-base">👑</span>
-                    <span class="text-base">🎀</span>
-                </div>
-
-                <!-- Tầng 1 (Tầng đáy) -->
-                <div id="layer-1" class="cake-layer w-68 sm:w-72 h-18 bg-gradient-to-r from-purple-400 via-pink-300 to-purple-400 rounded-t-2xl relative border-b-8 border-purple-500 shadow-lg flex items-center justify-around px-6 z-0">
-                    <span class="text-xl">✨</span>
-                    <span class="text-xl">🦄</span>
-                    <span class="text-xl">⭐</span>
-                    <span class="text-xl">✨</span>
-                </div>
-
-                <!-- Đế bánh -->
-                <div id="cake-base" class="w-76 sm:w-80 h-4 bg-white rounded-full shadow-2xl border border-gray-200 -mt-1 z-0 opacity-0 transition-opacity duration-300"></div>
-            </div>
-
-            <p id="intro-status-text" class="text-xs text-pink-200/70 font-light italic mt-2">
-                (Bật âm thanh thiết bị để tận hưởng điệu nhạc nha 🎵)
+    <!-- MÀN HÌNH 1: TRANG CHỦ 6 PHẦN (VÙNG ĐẤT KẸO NGỌT) -->
+    <main id="screen-home" class="max-w-5xl mx-auto px-4 pt-6 animate-pop">
+        <div class="text-center mb-8">
+            <span class="inline-block bg-white/90 text-pink-600 font-extrabold px-4 py-1.5 rounded-full text-sm shadow-sm border-2 border-pink-200 mb-2">
+                ✨ CHƯƠNG TRÌNH GLOBAL SUCCESS (UNIT STARTER – UNIT 6) ✨
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-slate-800 drop-shadow-sm">
+                Chào mừng <span class="text-pink-600">Cẩm Tiên</span> đến với Hành Trình Chinh Phục!
+            </h2>
+            <p class="text-slate-700 font-bold mt-2 text-sm sm:text-base max-w-2xl mx-auto">
+                Chọn 1 trong 6 vùng đất bên dưới để bắt đầu vượt ải. Trả lời đúng để mở khóa màn tiếp theo, mỗi màn có tối đa 3 trái tim nhé! 💖
             </p>
+        </div>
+
+        <div id="parts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Render 6 cards bằng JS -->
+        </div>
+    </main>
+
+    <!-- MÀN HÌNH 2: BẢN ĐỒ SAGA MAP KIỂU CANDY CRUSH -->
+    <section id="screen-map" class="hidden max-w-4xl mx-auto px-4 pt-5 animate-pop">
+        <div class="candy-card p-4 sm:p-5 mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <button onclick="goHome()" class="btn-candy bg-slate-200 text-slate-700 px-3.5 py-2 text-sm hover:bg-slate-300">
+                    ⬅ Quay lại
+                </button>
+                <div>
+                    <span id="map-part-badge" class="text-xs font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-pink-100 text-pink-600">PHẦN I</span>
+                    <h2 id="map-part-title" class="text-lg sm:text-xl font-black text-slate-800 mt-0.5">Trắc nghiệm khách quan</h2>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <div class="bg-emerald-50 border-2 border-emerald-200 px-3 py-1.5 rounded-2xl text-xs sm:text-sm font-extrabold text-emerald-700">
+                    Tiến độ: <span id="map-progress-text">0/40</span>
+                </div>
+                <button onclick="openResultModal()" class="btn-candy btn-yellow px-4 py-2 text-xs sm:text-sm flex items-center gap-1.5">
+                    📊 Xem Bảng Điểm
+                </button>
+                <button onclick="resetCurrentPart()" class="btn-candy bg-rose-100 text-rose-600 border-2 border-rose-200 px-3 py-2 text-xs sm:text-sm hover:bg-rose-200" title="Chơi lại từ đầu phần này">
+                    🔄 Làm lại
+                </button>
+            </div>
+        </div>
+
+        <!-- Khung đọc hiểu cho Phần V (nếu có) -->
+        <div id="map-reading-helper" class="hidden candy-card p-5 mb-6 bg-amber-50/95 border-amber-300">
+            <h3 class="font-black text-amber-800 text-base mb-2 flex items-center gap-2">📖 Hướng dẫn Phần V - Đọc hiểu:</h3>
+            <p class="text-sm font-bold text-slate-700">Mỗi màn chơi sẽ hiển thị đoạn văn tương ứng ngay trên màn hình để Cẩm Tiên dễ dàng đọc và chọn <b>True (Đúng)</b> hoặc <b>False (Sai)</b> nhé!</p>
+        </div>
+
+        <!-- Bản đồ các màn chơi uốn lượn -->
+        <div class="relative bg-white/50 backdrop-blur-sm rounded-3xl border-4 border-white/80 shadow-inner overflow-hidden">
+            <div id="saga-map-nodes" class="saga-container">
+                <!-- Các nút màn chơi được render bằng JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL CHƠI TỪNG MÀN (CÂU HỎI) -->
+    <div id="modal-play" class="hidden fixed inset-0 z-50 bg-slate-900/65 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div id="play-card" class="candy-card w-full max-w-2xl p-5 sm:p-7 relative my-auto animate-pop">
+            <!-- Thanh trạng thái màn chơi -->
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-3.5 mb-5">
+                <div class="flex items-center gap-2.5">
+                    <span id="play-level-badge" class="bg-gradient-to-r from-pink-500 to-rose-500 text-white font-black px-3.5 py-1 rounded-xl text-sm shadow-sm">
+                        MÀN 1 / 40
+                    </span>
+                    <span id="play-type-label" class="text-xs font-extrabold text-slate-500 hidden sm:inline">Trắc nghiệm</span>
+                </div>
+
+                <!-- 3 Trái Tim Mạng Chơi -->
+                <div class="flex items-center gap-2 bg-rose-50 border-2 border-rose-200 px-3 py-1 rounded-2xl">
+                    <span class="text-xs font-extrabold text-rose-600 mr-1">Lượt thử:</span>
+                    <span id="heart-1" class="heart-beat text-xl">❤️</span>
+                    <span id="heart-2" class="heart-beat text-xl">❤️</span>
+                    <span id="heart-3" class="heart-beat text-xl">❤️</span>
+                </div>
+
+                <button onclick="closePlayModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-black flex items-center justify-center transition">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Khu vực đoạn văn (dành cho Phần V & hội thoại Phần III) -->
+            <div id="play-context-box" class="hidden bg-sky-50 border-2 border-sky-200 rounded-2xl p-4 mb-4 text-sm sm:text-base font-bold text-slate-700 leading-relaxed">
+            </div>
+
+            <!-- Nội dung câu hỏi -->
+            <div class="mb-6">
+                <h3 id="play-question-text" class="text-xl sm:text-2xl font-black text-slate-800 leading-snug">
+                    Câu hỏi hiển thị ở đây
+                </h3>
+                <p id="play-question-hint" class="text-sm font-bold text-pink-600 mt-1.5 hidden"></p>
+            </div>
+
+            <!-- Khu vực tương tác trả lời (thay đổi linh hoạt theo từng loại câu hỏi) -->
+            <div id="play-interaction-area" class="space-y-3">
+                <!-- Render nút trắc nghiệm / ô điền chữ / thẻ từ -->
+            </div>
+
+            <!-- Thông báo phản hồi đúng/sai -->
+            <div id="play-feedback" class="hidden mt-5 p-4 rounded-2xl font-extrabold text-center text-base sm:text-lg">
+            </div>
         </div>
     </div>
 
-
-    <!-- ==================== 2. GIAO DIỆN CHÍNH (MAIN BIRTHDAY HUB) ==================== -->
-    <main id="main-content" class="w-full max-w-4xl z-10 flex flex-col items-center opacity-0 transition-opacity duration-1000 hidden my-4 px-2 sm:px-4">
-        
-        <!-- HEADER TOP -->
-        <header class="text-center my-3 sm:my-6 relative w-full">
-            <div class="inline-block bg-white/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-purple-300 shadow-sm mb-2">
-                <span class="text-purple-700 font-bold text-xs sm:text-sm tracking-wide">
-                    🎂 SỰ KIỆN SINH NHẬT 12/11/2018 - 12/11/2026 🎂
-                </span>
+    <!-- MODAL KẾT QUẢ & LỊCH SỬ CHI TIẾT -->
+    <div id="modal-result" class="hidden fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-md flex items-center justify-center p-3 sm:p-5 overflow-y-auto">
+        <div class="candy-card w-full max-w-4xl p-5 sm:p-8 my-auto max-h-[92vh] flex flex-col animate-pop">
+            <div class="flex items-center justify-between border-b-2 border-slate-100 pb-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🏆</span>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-black text-pink-600">BẢNG VÀNG KẾT QUẢ BÀI LÀM</h2>
+                        <p id="res-part-name" class="text-xs sm:text-sm font-bold text-slate-500">Phần I: Trắc nghiệm khách quan</p>
+                    </div>
+                </div>
+                <button onclick="closeResultModal()" class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 font-black text-slate-600">✕</button>
             </div>
-            
-            <h1 class="font-dancing text-4xl sm:text-6xl md:text-7xl font-bold text-purple-700 drop-shadow-[0_3px_5px_rgba(186,104,200,0.3)] leading-tight">
-                Chúc Mừng Sinh Nhật <br class="sm:hidden"> Cẩm Tiên! 💖
-            </h1>
-            
-            <div class="flex items-center justify-center gap-2 mt-2">
-                <span class="h-0.5 w-12 bg-purple-400 rounded"></span>
-                <span class="text-purple-600 font-pacifico text-sm sm:text-base">Tròn 8 Tuổi Siêu Ngoan Ngoãn & Xinh Đẹp</span>
-                <span class="h-0.5 w-12 bg-purple-400 rounded"></span>
+
+            <div class="overflow-y-auto pr-1 space-y-6 flex-1">
+                <!-- Khối Điểm Số & Thông Tin Học Sinh -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <!-- Điểm số nổi bật (Thang điểm 10) -->
+                    <div class="md:col-span-5 bg-gradient-to-br from-pink-500 via-rose-500 to-amber-500 rounded-3xl p-5 text-white text-center shadow-lg flex flex-col justify-center items-center relative overflow-hidden">
+                        <div class="text-xs font-extrabold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full mb-2">
+                            ĐIỂM TỔNG KẾT (THANG 10)
+                        </div>
+                        <div id="res-score-10" class="text-5xl sm:text-6xl font-black drop-shadow-md my-1">
+                            10.0
+                        </div>
+                        <div id="res-correct-ratio" class="text-base sm:text-lg font-extrabold bg-black/20 px-4 py-1 rounded-2xl mt-2">
+                            Đúng: 40 / 40 câu
+                        </div>
+                    </div>
+
+                    <!-- Thông tin chi tiết thời gian -->
+                    <div class="md:col-span-7 bg-slate-50 border-2 border-slate-200 rounded-3xl p-5 flex flex-col justify-center space-y-2.5 text-sm sm:text-base">
+                        <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                            <span class="font-bold text-slate-500">👧 Họ và tên thí sinh:</span>
+                            <span class="font-black text-indigo-700">Nguyễn Thị Cẩm Tiên (Lớp 3D)</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                            <span class="font-bold text-slate-500">🕒 Thời gian vào làm bài:</span>
+                            <span id="res-start-time" class="font-extrabold text-slate-800">--:--:--</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-200 pb-1.5">
+                            <span class="font-bold text-slate-500">🏁 Thời gian nộp bài:</span>
+                            <span id="res-end-time" class="font-extrabold text-slate-800">--:--:--</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="font-bold text-slate-500">⏱️ Tổng thời gian làm bài:</span>
+                            <span id="res-duration" class="font-black text-pink-600">0 phút 0 giây</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lịch sử chi tiết từng câu -->
+                <div>
+                    <h3 class="text-lg font-black text-slate-800 mb-3 flex items-center gap-2">
+                        📋 LỊCH SỬ CHI TIẾT BÀI LÀM
+                    </h3>
+                    <div class="overflow-x-auto rounded-2xl border-2 border-slate-200">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-black border-b-2 border-slate-200">
+                                    <th class="p-3 w-16 text-center">Câu</th>
+                                    <th class="p-3">Nội dung câu hỏi</th>
+                                    <th class="p-3">Bé chọn</th>
+                                    <th class="p-3">Đáp án đúng</th>
+                                    <th class="p-3 w-28 text-center">Kết quả</th>
+                                </tr>
+                            </thead>
+                            <tbody id="res-history-tbody" class="divide-y divide-slate-200 bg-white font-bold">
+                                <!-- Render lịch sử bằng JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </header>
 
-        <!-- Dynamic Controls -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 w-full max-w-xl">
-            <button onclick="toggleAudio()" id="music-toggle-btn" class="flex items-center space-x-2 bg-white/80 hover:bg-white text-purple-700 px-3.5 py-2 rounded-full shadow-md border border-purple-200 text-xs sm:text-sm font-semibold transition active:scale-95">
-                <i id="music-icon" class="fas fa-music text-purple-500 animate-spin"></i>
-                <span id="music-text">Đang phát nhạc 🎵</span>
-            </button>
-
-            <button onclick="triggerConfettiBurst()" class="flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-4 py-2 rounded-full shadow-md text-xs sm:text-sm font-bold transition active:scale-95">
-                <span>🎉 Pháo Hoa</span>
-            </button>
-
-            <button onclick="spawnHearts()" class="flex items-center space-x-2 bg-gradient-to-r from-pink-400 to-rose-400 hover:from-pink-500 hover:to-rose-500 text-white px-4 py-2 rounded-full shadow-md text-xs sm:text-sm font-bold transition active:scale-95">
-                <span>💖 Thả Trái Tim</span>
-            </button>
-
-            <button onclick="scrollToCake()" class="flex items-center space-x-2 bg-yellow-400 hover:bg-yellow-500 text-purple-950 px-4 py-2 rounded-full shadow-md text-xs sm:text-sm font-bold transition active:scale-95">
-                <span>🎂 Thổi Nến Bánh</span>
-            </button>
+            <div class="pt-4 mt-4 border-t-2 border-slate-100 flex flex-wrap justify-end gap-3">
+                <button onclick="closeResultModal()" class="btn-candy btn-blue px-5 py-2.5 text-sm">
+                    Tiếp tục bản đồ
+                </button>
+                <button onclick="resetCurrentPart(); closeResultModal();" class="btn-candy btn-pink px-5 py-2.5 text-sm">
+                    🔄 Làm lại phần này
+                </button>
+            </div>
         </div>
+    </div>
 
-
-        <!-- ==================== STORY SLIDESHOW ==================== -->
-        <section class="w-full glass-card rounded-3xl p-4 sm:p-6 mb-8 shadow-2xl relative overflow-hidden">
-            <div id="story-progress-container" class="flex gap-1.5 mb-4"></div>
-
-            <div class="relative min-h-[340px] sm:min-h-[380px] flex flex-col justify-between items-center text-center p-2">
-                <div class="flex items-center justify-between w-full text-xs sm:text-sm text-purple-700 font-bold mb-2 px-2">
-                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full shadow-inner flex items-center gap-1">
-                        <i class="fas fa-sparkles text-purple-500"></i>
-                        <span>Thước phim hành trình tuổi 8</span>
-                    </span>
-                    <span id="slide-counter" class="text-purple-600 font-mono">1/5</span>
-                </div>
-
-                <div id="slide-body" class="my-auto py-4 transition-all duration-500 transform w-full flex flex-col items-center"></div>
-
-                <div class="flex items-center justify-between w-full mt-4 pt-2 border-t border-purple-200/60">
-                    <button onclick="prevSlide()" class="p-2 sm:px-4 sm:py-2 bg-purple-100 hover:bg-purple-200 text-purple-800 rounded-full font-bold text-xs sm:text-sm flex items-center space-x-1 transition active:scale-90">
-                        <i class="fas fa-chevron-left"></i>
-                        <span class="hidden sm:inline">Trước</span>
-                    </button>
-
-                    <div class="flex space-x-2">
-                        <button id="pause-btn" onclick="togglePauseStory()" class="px-3 py-1.5 bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-300 rounded-full text-xs font-semibold flex items-center gap-1">
-                            <i id="pause-icon" class="fas fa-pause"></i>
-                            <span id="pause-text">Tạm dừng</span>
-                        </button>
-                    </div>
-
-                    <button onclick="nextSlide()" class="p-2 sm:px-4 sm:py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-bold text-xs sm:text-sm flex items-center space-x-1 shadow-md transition active:scale-90">
-                        <span class="hidden sm:inline">Tiếp theo</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==================== AGE & TIME COUNTER CARD ==================== -->
-        <section class="w-full glass-card rounded-3xl p-5 sm:p-6 mb-8 text-center relative overflow-hidden">
-            <h3 class="font-comfortaa text-lg sm:text-xl font-bold text-purple-800 mb-4 flex items-center justify-center gap-2">
-                <span>🌟</span> Hành Trình 8 Năm Rực Rỡ Của Cẩm Tiên <span>🌟</span>
-            </h3>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-                <div class="bg-gradient-to-br from-purple-100 to-pink-50 p-3.5 rounded-2xl border border-purple-200 shadow-sm">
-                    <div id="count-years" class="text-2xl sm:text-3xl font-black text-purple-600 font-mono">8</div>
-                    <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">Năm Tuổi ✨</div>
-                </div>
-                <div class="bg-gradient-to-br from-purple-100 to-pink-50 p-3.5 rounded-2xl border border-purple-200 shadow-sm">
-                    <div id="count-days" class="text-2xl sm:text-3xl font-black text-purple-600 font-mono">2,922</div>
-                    <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">Ngày Yêu Thương 💖</div>
-                </div>
-                <div class="bg-gradient-to-br from-purple-100 to-pink-50 p-3.5 rounded-2xl border border-purple-200 shadow-sm">
-                    <div id="count-hours" class="text-2xl sm:text-3xl font-black text-purple-600 font-mono">70,128</div>
-                    <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">Giờ Nụ Cười 😊</div>
-                </div>
-                <div class="bg-gradient-to-br from-purple-100 to-pink-50 p-3.5 rounded-2xl border border-purple-200 shadow-sm">
-                    <div id="count-minutes" class="text-2xl sm:text-3xl font-black text-purple-600 font-mono">4,207,680</div>
-                    <div class="text-xs sm:text-sm font-semibold text-gray-600 mt-1">Phút Hạnh Phúc 🎈</div>
-                </div>
-            </div>
-            
-            <p class="text-xs text-purple-600 mt-4 italic font-medium">
-                (Sinh ngày: 12/11/2018 - Chính thức tròn 8 tuổi ngày 12/11/2026 💕)
-            </p>
-        </section>
-
-
-        <!-- ==================== INTERACTIVE BIRTHDAY CAKE MAIN ==================== -->
-        <section id="cake-section" class="w-full glass-card rounded-3xl p-6 sm:p-8 mb-8 text-center flex flex-col items-center relative">
-            <h3 class="font-dancing text-3xl sm:text-4xl text-purple-700 font-bold mb-2">
-                Bánh Sinh Nhật Tuổi 8 Kỳ Diệu
-            </h3>
-            <p class="text-xs sm:text-sm text-gray-600 mb-6 font-comfortaa">
-                Hãy nhắm mắt ước một điều ước thật đẹp rồi nhấn <span class="text-purple-600 font-bold">"Thổi Nến"</span> nhé Cẩm Tiên! ✨
-            </p>
-
-            <div class="relative my-6 flex flex-col items-center cursor-pointer" onclick="blowOutCandles()">
-                <!-- Nến sinh nhật -->
-                <div class="flex justify-center space-x-6 z-20 -mb-2">
-                    <div class="flex flex-col items-center">
-                        <div id="flame-1" class="flame"></div>
-                        <div id="smoke-1" class="smoke"></div>
-                        <div class="w-3.5 h-10 bg-gradient-to-b from-yellow-200 via-pink-400 to-purple-400 rounded-t-sm shadow-inner border border-white/50"></div>
-                    </div>
-                    <!-- Nến số 8 -->
-                    <div class="flex flex-col items-center">
-                        <div id="flame-2" class="flame"></div>
-                        <div id="smoke-2" class="smoke"></div>
-                        <div class="w-5 h-12 bg-gradient-to-b from-yellow-300 via-pink-500 to-purple-600 rounded-t-sm shadow-inner border border-white flex items-center justify-center font-bold text-sm text-white">8</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div id="flame-3" class="flame"></div>
-                        <div id="smoke-3" class="smoke"></div>
-                        <div class="w-3.5 h-10 bg-gradient-to-b from-purple-400 via-pink-400 to-yellow-200 rounded-t-sm shadow-inner border border-white/50"></div>
-                    </div>
-                </div>
-
-                <!-- 3 Tầng bánh chính -->
-                <div class="w-44 sm:w-56 h-16 bg-gradient-to-r from-purple-300 via-pink-200 to-purple-300 rounded-t-3xl relative border-b-4 border-purple-400 shadow-md flex items-center justify-center">
-                    <div class="absolute top-0 w-full flex justify-around text-white/90 text-sm">
-                        <span>🌸</span><span>🍓</span><span>🌸</span><span>🍓</span><span>🌸</span>
-                    </div>
-                    <span class="font-pacifico text-purple-800 text-sm sm:text-base mt-2">Cẩm Tiên 8 Tuổi</span>
-                </div>
-
-                <div class="w-60 sm:w-72 h-20 bg-gradient-to-r from-pink-300 via-purple-300 to-pink-300 rounded-t-2xl relative border-b-8 border-purple-400 shadow-lg flex items-center justify-around px-4">
-                    <span class="text-lg">🎀</span>
-                    <span class="text-lg">👑</span>
-                    <span class="text-lg">🦄</span>
-                    <span class="text-lg">🎀</span>
-                </div>
-
-                <div class="w-68 sm:w-80 h-4 bg-white rounded-full shadow-2xl border border-gray-200 -mt-1"></div>
-            </div>
-
-            <button id="blow-btn" onclick="blowOutCandles()" class="mt-4 bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-purple-950 px-6 py-3 rounded-full font-bold text-sm sm:text-base shadow-lg transform transition active:scale-95 flex items-center space-x-2">
-                <span>🌬️ Thổi Nến & Ước Điều Ước</span>
-            </button>
-            
-            <p id="wish-message" class="hidden mt-4 text-purple-700 font-bold text-base sm:text-lg animate-bounce">
-                🎉 Điều ước tuổi 8 của Cẩm Tiên đã được gửi đến vũ trụ! Chúc con luôn vui vẻ và hạnh phúc! 🌟
-            </p>
-        </section>
-
-        <!-- FOOTER SWEET MESSAGE -->
-        <footer class="text-center py-6 text-gray-600 text-xs sm:text-sm font-comfortaa">
-            <p class="flex items-center justify-center gap-1">
-                <span>Gửi ngàn tình yêu thương đến công chúa nhỏ</span>
-                <span class="font-bold text-purple-700">Cẩm Tiên</span>
-                <span>💖</span>
-            </p>
-            <p class="mt-1 text-purple-500 font-semibold">12/11/2018 - 12/11/2026 ✨ Happy 8th Birthday!</p>
-        </footer>
-
-    </main>
-
-
-    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
-        const slides = [
+        // =========================================================================
+        // CƠ SỞ DỮ LIỆU ĐẦY ĐỦ 140 CÂU HỎI TỪ FILE ĐÍNH KÈM (6 PHẦN)
+        // =========================================================================
+        const QUIZ_DATA = [
             {
-                title: "Công Chúa Cẩm Tiên! 👑",
-                subtitle: "Chúc Mừng Sinh Nhật Tròn 8 Tuổi! 🎉🎂",
-                emoji: "👸",
-                stickers: ["🎂", "🎈", "✨", "👑"],
-                bgGradient: "from-purple-100 to-pink-100",
-                message: "Hôm nay là một ngày siêu tuyệt vời! Bé Cẩm Tiên (12/11/2018) của chúng ta đã chính thức tròn 8 tuổi rồi nè. Chúc con một tuổi mới ngập tràn nụ cười và xinh xắn nhất!",
-                accentColor: "text-purple-700"
+                id: 1,
+                code: "PHẦN I",
+                title: "Trắc Nghiệm Khách Quan",
+                subtitle: "40 Câu hỏi • Unit Starter – Unit 6",
+                icon: "🎯",
+                color: "from-pink-500 to-rose-500",
+                badgeBg: "bg-pink-100 text-pink-700",
+                type: "mcq",
+                questions: [
+                    { q: "Hello, I'm Ben. - __________, Ben. I'm Mai.", options: ["Hi", "Goodbye", "Fine", "Yes"], ans: "Hi" },
+                    { q: "How __________ you? - I'm fine, thank you.", options: ["are", "is", "am", "do"], ans: "are" },
+                    { q: "Nice to __________ you. - Nice to meet you, too.", options: ["meet", "see", "spell", "touch"], ans: "meet" },
+                    { q: "Goodbye, Class! - __________, teacher!", options: ["Goodbye", "Hello", "Fine", "Stand up"], ans: "Goodbye" },
+                    { q: "What's __________ name? - My name is Lucy.", options: ["your", "my", "you", "it"], ans: "your" },
+                    { q: "How do you __________ your name? - L-I-N-H.", options: ["spell", "write", "speak", "listen"], ans: "spell" },
+                    { q: "How __________ are you? - I'm eight years old.", options: ["old", "many", "fine", "what"], ans: "old" },
+                    { q: "How old is Peter? - He is __________ years old. (8 tuổi)", options: ["eight", "seven", "nine", "ten"], ans: "eight" },
+                    { q: "This __________ my friend, Mary.", options: ["is", "are", "am", "it"], ans: "is" },
+                    { q: "That __________ Mr Long. He is my teacher.", options: ["is", "are", "am", "isn't"], ans: "is" },
+                    { q: "Is this Mai? - Yes, __________.", options: ["it is", "it isn't", "this is", "it's not"], ans: "it is" },
+                    { q: "Is that Minh? - No, __________. It's Nam.", options: ["it isn't", "it is", "that isn't", "it not"], ans: "it isn't" },
+                    { q: "What's this? - It's __________ ear.", options: ["an", "a", "two", "the"], ans: "an" },
+                    { q: "What's that? - It's __________ hand.", options: ["a", "an", "two", "hair"], ans: "a" },
+                    { q: "__________ your face, please!", options: ["Touch", "Open", "Close", "Stand"], ans: "Touch" },
+                    { q: "__________ your mouth, please!", options: ["Open", "Touch", "Stand", "Sit"], ans: "Open" },
+                    { q: "What's your __________? - It's cooking.", options: ["hobby", "name", "age", "friend"], ans: "hobby" },
+                    { q: "What's your hobby? - I like __________.", options: ["swimming", "swim", "a swim", "swims"], ans: "swimming" },
+                    { q: "My hobby is __________ pictures.", options: ["drawing", "draw", "to draw", "draws"], ans: "drawing" },
+                    { q: "Do you like singing? - Yes, I __________.", options: ["do", "like", "am", "can"], ans: "do" },
+                    { q: "Is this our __________? - Yes, it is.", options: ["classroom", "friend", "name", "hobby"], ans: "classroom" },
+                    { q: "Let's go to the __________! - OK, let's go.", options: ["library", "face", "eye", "hand"], ans: "library" },
+                    { q: "Is that the computer room? - No, __________. It's the music room.", options: ["it isn't", "it is", "it's", "it not"], ans: "it isn't" },
+                    { q: "Let's go to the __________. We can play football there.", options: ["playground", "gym", "classroom", "art room"], ans: "playground" },
+                    { q: "We can read books in the __________.", options: ["library", "music room", "gym", "playground"], ans: "library" },
+                    { q: "What's __________ name? - Her name is Hoa.", options: ["her", "his", "your", "my"], ans: "her" },
+                    { q: "How old is your sister? - She is __________ years old. (9 tuổi)", options: ["nine", "ten", "seven", "six"], ans: "nine" },
+                    { q: "What are these? - They are my __________.", options: ["eyes", "eye", "nose", "mouth"], ans: "eyes" },
+                    { q: "I have one __________ and two ears.", options: ["nose", "eyes", "hands", "ears"], ans: "nose" },
+                    { q: "Stand __________, please!", options: ["up", "down", "in", "out"], ans: "up" },
+                    { q: "Sit __________, please!", options: ["down", "up", "on", "to"], ans: "down" },
+                    { q: "Close your __________, please!", options: ["book", "hair", "nose", "face"], ans: "book" },
+                    { q: "Open your __________, please!", options: ["book", "hand", "hair", "face"], ans: "book" },
+                    { q: "Is that Ms Hien? - Yes, __________.", options: ["it is", "it isn't", "she is", "this is"], ans: "it is" },
+                    { q: "What is his hobby? - He likes __________.", options: ["running", "run", "a run", "runs"], ans: "running" },
+                    { q: "My brother likes __________ football.", options: ["playing", "play", "plays", "to play"], ans: "playing" },
+                    { q: "Let's go to the __________ to draw pictures.", options: ["art room", "music room", "gym", "computer room"], ans: "art room" },
+                    { q: "Let's go to the __________ to play computer games.", options: ["computer room", "library", "playground", "classroom"], ans: "computer room" },
+                    { q: "__________ to meet you. - Nice to meet you, too.", options: ["Nice", "Glad", "Fine", "Good"], ans: "Nice" },
+                    { q: "Four plus five is __________.", options: ["nine", "eight", "ten", "seven"], ans: "nine" }
+                ]
             },
             {
-                title: "Học Giỏi & Siêu Ngoan Ngoãn 🌸",
-                subtitle: "Niềm Tự Hào Của Cả Gia Đình ✨",
-                emoji: "🦄",
-                stickers: ["💖", "📚", "🎨", "🌟"],
-                bgGradient: "from-pink-100 to-purple-100",
-                message: "Chúc Cẩm Tiên bước sang tuổi 8 thật chăm ngoan, học giỏi, luôn đạt nhiều điểm 10 rực rỡ và luôn là cô bé dịu dàng, ấm áp của gia đình nha!",
-                accentColor: "text-pink-600"
+                id: 2,
+                code: "PHẦN II",
+                title: "Hoàn Thiện Từ Vựng",
+                subtitle: "25 Câu • Điền chữ cái còn thiếu",
+                icon: "🔤",
+                color: "from-sky-500 to-blue-600",
+                badgeBg: "bg-sky-100 text-sky-700",
+                type: "missing_letter",
+                questions: [
+                    { display: "h _ l l o", meaning: "xin chào", fullWord: "hello", ans: "e" },
+                    { display: "g _ o d b y e", meaning: "tạm biệt", fullWord: "goodbye", ans: "o" },
+                    { display: "f _ n e", meaning: "khỏe", fullWord: "fine", ans: "i" },
+                    { display: "n _ m e", meaning: "tên", fullWord: "name", ans: "a" },
+                    { display: "s p _ l l", meaning: "đánh vần", fullWord: "spell", ans: "e" },
+                    { display: "e _ g h t", meaning: "số 8", fullWord: "eight", ans: "i" },
+                    { display: "f r _ e n d", meaning: "bạn bè", fullWord: "friend", ans: "i" },
+                    { display: "t _ a c h e r", meaning: "giáo viên", fullWord: "teacher", ans: "e" },
+                    { display: "f _ c e", meaning: "khuôn mặt", fullWord: "face", ans: "a" },
+                    { display: "m _ u t h", meaning: "cái miệng", fullWord: "mouth", ans: "o" },
+                    { display: "n _ s e", meaning: "cái mũi", fullWord: "nose", ans: "o" },
+                    { display: "e _ e", meaning: "mắt", fullWord: "eye", ans: "y" },
+                    { display: "h _ n d", meaning: "bàn tay", fullWord: "hand", ans: "a" },
+                    { display: "h _ i r", meaning: "mái tóc", fullWord: "hair", ans: "a" },
+                    { display: "t _ u c h", meaning: "chạm, sờ", fullWord: "touch", ans: "o" },
+                    { display: "c _ o k i n g", meaning: "nấu ăn", fullWord: "cooking", ans: "o" },
+                    { display: "d _ n c i n g", meaning: "nhảy", fullWord: "dancing", ans: "a" },
+                    { display: "s _ n g i n g", meaning: "ca hát", fullWord: "singing", ans: "i" },
+                    { display: "s w _ m m i n g", meaning: "bơi lội", fullWord: "swimming", ans: "i" },
+                    { display: "r _ n n i n g", meaning: "chạy bộ", fullWord: "running", ans: "u" },
+                    { display: "w _ l k i n g", meaning: "đi bộ", fullWord: "walking", ans: "a" },
+                    { display: "s c h _ o l", meaning: "trường học", fullWord: "school", ans: "o" },
+                    { display: "l _ b r a r y", meaning: "thư viện", fullWord: "library", ans: "i" },
+                    { display: "g _ m", meaning: "phòng thể chất", fullWord: "gym", ans: "y" },
+                    { display: "p l _ y g r o u n d", meaning: "sân chơi", fullWord: "playground", ans: "a" }
+                ]
             },
             {
-                title: "Rực Rỡ & Tràn Ngập Nụ Cười 🎁",
-                subtitle: "Nhận Thật Nhiều Quà Xinh! 🧸",
-                emoji: "🎁",
-                stickers: ["🧸", "🍭", "🎀", "🎉"],
-                bgGradient: "from-purple-100 to-blue-100",
-                message: "Mong rằng mỗi ngày tuổi mới của Cẩm Tiên đều ngập tràn niềm vui, nhiều điều kỳ diệu và được nhận thật nhiều món quà xinh xắn đáng yêu!",
-                accentColor: "text-purple-700"
+                id: 3,
+                code: "PHẦN III",
+                title: "Chọn Từ Điền Chỗ Trống",
+                subtitle: "25 Câu • Hoàn thiện câu & hội thoại",
+                icon: "✍️",
+                color: "from-emerald-500 to-teal-600",
+                badgeBg: "bg-emerald-100 text-emerald-700",
+                type: "word_bank",
+                questions: [
+                    // 1-10: Khung [ name | old | friend | Touch | an | hobby | library | this | Open | fine ]
+                    { q: "Hello, my __________ is Nam.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "name" },
+                    { q: "How __________ are you? - I'm eight years old.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "old" },
+                    { q: "This is my __________, Ben.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "friend" },
+                    { q: "What's this? - It's __________ ear.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "an" },
+                    { q: "__________ your eyes, please! (Mở mắt ra nào)", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "Open" },
+                    { q: "__________ your nose, please! (Chạm vào mũi nào)", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "Touch" },
+                    { q: "What's your __________? - It's dancing.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "hobby" },
+                    { q: "Let's go to the __________ to read books.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "library" },
+                    { q: "Is __________ our music room?", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "this" },
+                    { q: "How are you, Mai? - I'm __________, thank you.", bank: ["name", "old", "friend", "Touch", "an", "hobby", "library", "this", "Open", "fine"], ans: "fine" },
+                    // Đoạn hội thoại 1 (11-14): name, Hi, years, spell
+                    { context: "Đoạn hội thoại 1:\nA: (11) __________, I'm Linh. What's your (12) __________?\nB: My name's Peter.\nA: How do you (13) __________ your name? - B: P-E-T-E-R.\nA: How old are you, Peter? - B: I'm nine (14) __________ old.", q: "Điền vào vị trí (11): __________ , I'm Linh.", bank: ["name", "Hi", "years", "spell"], ans: "Hi" },
+                    { context: "Đoạn hội thoại 1:\nA: Hi, I'm Linh. What's your (12) __________?\nB: My name's Peter.", q: "Điền vào vị trí (12): What's your __________?", bank: ["name", "Hi", "years", "spell"], ans: "name" },
+                    { context: "Đoạn hội thoại 1:\nA: How do you (13) __________ your name?\nB: P-E-T-E-R.", q: "Điền vào vị trí (13): How do you __________ your name?", bank: ["name", "Hi", "years", "spell"], ans: "spell" },
+                    { context: "Đoạn hội thoại 1:\nA: How old are you, Peter?\nB: I'm nine (14) __________ old.", q: "Điền vào vị trí (14): I'm nine __________ old.", bank: ["name", "Hi", "years", "spell"], ans: "years" },
+                    // Đoạn hội thoại 2 (15-18): that, isn't, friend, teacher
+                    { context: "Đoạn hội thoại 2:\nA: Is (15) __________ Ms Hoa?\nB: No, it (16) __________. It's Ms Hien.", q: "Điền vào vị trí (15): Is __________ Ms Hoa?", bank: ["that", "isn't", "friend", "teacher"], ans: "that" },
+                    { context: "Đoạn hội thoại 2:\nA: Is that Ms Hoa?\nB: No, it (16) __________. It's Ms Hien.", q: "Điền vào vị trí (16): No, it __________.", bank: ["that", "isn't", "friend", "teacher"], ans: "isn't" },
+                    { context: "Đoạn hội thoại 2:\nA: Is this your (17) __________, Nam?\nB: Yes, it is. And that is my (18) __________, Mr Long.", q: "Điền vào vị trí (17): Is this your __________, Nam?", bank: ["that", "isn't", "friend", "teacher"], ans: "friend" },
+                    { context: "Đoạn hội thoại 2:\nB: Yes, it is. And that is my (18) __________, Mr Long.", q: "Điền vào vị trí (18): And that is my __________, Mr Long.", bank: ["that", "isn't", "friend", "teacher"], ans: "teacher" },
+                    // Đoạn hội thoại 3 (19-25): hobby, like, It's, What's, Let's, go, now
+                    { context: "Đoạn hội thoại 3:\nA: (19) __________ your hobby, Mary?\nB: (20) __________ singing. I (21) __________ singing English songs.", q: "Điền vào vị trí (19): __________ your hobby, Mary?", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "What's" },
+                    { context: "Đoạn hội thoại 3:\nA: What's your hobby, Mary?\nB: (20) __________ singing.", q: "Điền vào vị trí (20): __________ singing.", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "It's" },
+                    { context: "Đoạn hội thoại 3:\nB: It's singing. I (21) __________ singing English songs. What about you?", q: "Điền vào vị trí (21): I __________ singing English songs.", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "like" },
+                    { context: "Đoạn hội thoại 3:\nA: My (22) __________ is drawing pictures.", q: "Điền vào vị trí (22): My __________ is drawing pictures.", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "hobby" },
+                    { context: "Đoạn hội thoại 3:\nB: Great! (23) __________ go to the art room!", q: "Điền vào vị trí (23): Great! __________ go to the art room!", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "Let's" },
+                    { context: "Đoạn hội thoại 3:\nA: OK, let's (24) __________!", q: "Điền vào vị trí (24): OK, let's __________!", bank: ["hobby", "like", "It's", "What's", "Let's", "go"], ans: "go" },
+                    { context: "Đoạn hội thoại 3:\nA: OK, let's go! We can draw pictures together (25) __________.", q: "Điền vào vị trí (25): We can draw pictures together __________.", bank: ["now", "go", "like", "hobby"], ans: "now" }
+                ]
             },
             {
-                title: "Khỏe Mạnh & Chóng Lớn 💕",
-                subtitle: "Tuổi 8 Tuyệt Vời Nhất 🌸",
-                emoji: "💖",
-                stickers: ["🌸", "🍀", "🍬", "⭐"],
-                bgGradient: "from-pink-100 to-yellow-50",
-                message: "Chúc Cẩm Tiên luôn khỏe mạnh, vui tươi hồn nhiên, luôn có thật nhiều bạn tốt đồng hành và tỏa sáng rực rỡ như một vì sao nhỏ!",
-                accentColor: "text-rose-600"
+                id: 4,
+                code: "PHẦN IV",
+                title: "Nối Câu Hỏi & Phản Hồi",
+                subtitle: "15 Câu • Ghép cặp giao tiếp Cột A - Cột B",
+                icon: "🔗",
+                color: "from-amber-500 to-orange-500",
+                badgeBg: "bg-amber-100 text-amber-700",
+                type: "matching_mcq",
+                questions: [
+                    { q: "1. How are you, Linh?", options: ["Fine, thank you.", "It's a hand.", "I'm eight years old.", "My name's Ben."], ans: "Fine, thank you." },
+                    { q: "2. What's your name?", options: ["My name's Ben.", "M-A-R-Y.", "Fine, thank you.", "Yes, it is."], ans: "My name's Ben." },
+                    { q: "3. How do you spell your name?", options: ["M-A-R-Y.", "My name's Ben.", "It's swimming.", "OK, let's go."], ans: "M-A-R-Y." },
+                    { q: "4. How old are you?", options: ["I'm eight years old.", "Fine, thank you.", "No, it isn't. It's Mr Loc.", "Yes, I do."], ans: "I'm eight years old." },
+                    { q: "5. Is that Mr Long?", options: ["No, it isn't. It's Mr Loc.", "Yes, it is. It's big.", "It's a hand.", "Goodbye, teacher!"], ans: "No, it isn't. It's Mr Loc." },
+                    { q: "6. What's this?", options: ["It's a hand.", "It's swimming.", "OK, let me open it.", "M-A-R-Y."], ans: "It's a hand." },
+                    { q: "7. Open your mouth, please!", options: ["OK, let me open it.", "OK, let me touch it.", "OK, let me close it.", "OK, let's go."], ans: "OK, let me open it." },
+                    { q: "8. What's your hobby?", options: ["It's swimming.", "Yes, I do.", "It's a hand.", "I'm eight years old."], ans: "It's swimming." },
+                    { q: "9. Is this our school?", options: ["Yes, it is. It's big.", "No, it isn't. It's Mr Loc.", "OK, let's go.", "Fine, thank you."], ans: "Yes, it is. It's big." },
+                    { q: "10. Let's go to the gym!", options: ["OK, let's go.", "OK, let me open it.", "Yes, it is.", "Goodbye, teacher!"], ans: "OK, let's go." },
+                    { q: "11. Touch your hair, please!", options: ["OK, let me touch it.", "OK, let me open it.", "OK, let me close it.", "OK, let's go."], ans: "OK, let me touch it." },
+                    { q: "12. Close your book, please!", options: ["OK, let me close it.", "OK, let me open it.", "OK, let me touch it.", "Yes, it is."], ans: "OK, let me close it." },
+                    { q: "13. Is that Lucy?", options: ["Yes, it is.", "Yes, I do.", "It's swimming.", "My name's Ben."], ans: "Yes, it is." },
+                    { q: "14. Do you like cooking?", options: ["Yes, I do.", "Yes, it is.", "It's swimming.", "Fine, thank you."], ans: "Yes, I do." },
+                    { q: "15. Goodbye, Class!", options: ["Goodbye, teacher!", "Fine, thank you.", "OK, let's go.", "My name's Ben."], ans: "Goodbye, teacher!" }
+                ]
             },
             {
-                title: "Happy 8th Birthday Cẩm Tiên! 🥳",
-                subtitle: "(12/11/2018 - 12/11/2026) 💕",
-                emoji: "🥳",
-                stickers: ["🎉", "👑", "🎂", "✨"],
-                bgGradient: "from-purple-200 to-pink-200",
-                message: "Hành trình tuổi 8 vô cùng hứa hẹn đang chờ đón Cẩm Tiên! Cùng bấm nút thổi nến và biến mọi ước mơ của con thành hiện thực nhé!",
-                accentColor: "text-purple-800"
+                id: 5,
+                code: "PHẦN V",
+                title: "Đọc Hiểu True / False",
+                subtitle: "15 Câu • Đọc 3 đoạn văn & chọn Đúng / Sai",
+                icon: "📖",
+                color: "from-purple-500 to-indigo-600",
+                badgeBg: "bg-purple-100 text-purple-700",
+                type: "true_false",
+                questions: [
+                    // Đoạn 1 (1-5)
+                    { passage: "📖 Đoạn văn 1:\n“Hello! My name is Mai. I am eight years old. This is my school, Sao Mai Primary School. It is big and new. Look! This is my classroom. That is the computer room. I like drawing and singing. At break time, I go to the playground with my friend, Linh.”", q: "1. Mai is eight years old.", ans: "True" },
+                    { passage: "📖 Đoạn văn 1:\n“Hello! My name is Mai. I am eight years old. This is my school, Sao Mai Primary School. It is big and new. Look! This is my classroom. That is the computer room. I like drawing and singing. At break time, I go to the playground with my friend, Linh.”", q: "2. Mai's school is small and old.", ans: "False" },
+                    { passage: "📖 Đoạn văn 1:\n“Hello! My name is Mai. I am eight years old. This is my school, Sao Mai Primary School. It is big and new. Look! This is my classroom. That is the computer room. I like drawing and singing. At break time, I go to the playground with my friend, Linh.”", q: "3. That is the music room.", ans: "False" },
+                    { passage: "📖 Đoạn văn 1:\n“Hello! My name is Mai. I am eight years old. This is my school, Sao Mai Primary School. It is big and new. Look! This is my classroom. That is the computer room. I like drawing and singing. At break time, I go to the playground with my friend, Linh.”", q: "4. Mai likes drawing and singing.", ans: "True" },
+                    { passage: "📖 Đoạn văn 1:\n“Hello! My name is Mai. I am eight years old. This is my school, Sao Mai Primary School. It is big and new. Look! This is my classroom. That is the computer room. I like drawing and singing. At break time, I go to the playground with my friend, Linh.”", q: "5. At break time, Mai goes to the playground with Linh.", ans: "True" },
+                    // Đoạn 2 (6-10)
+                    { passage: "📖 Đoạn văn 2:\n“Hi, I am Nam. I am nine years old. Look at my body! I have two eyes, two ears, one nose, and one mouth. My teacher says: 'Touch your hair!' and 'Open your eyes!'. My hobby is swimming and playing football. My friend, Ben, likes cooking.”", q: "6. Nam is nine years old.", ans: "True" },
+                    { passage: "📖 Đoạn văn 2:\n“Hi, I am Nam. I am nine years old. Look at my body! I have two eyes, two ears, one nose, and one mouth. My teacher says: 'Touch your hair!' and 'Open your eyes!'. My hobby is swimming and playing football. My friend, Ben, likes cooking.”", q: "7. Nam has one eye and two noses.", ans: "False" },
+                    { passage: "📖 Đoạn văn 2:\n“Hi, I am Nam. I am nine years old. Look at my body! I have two eyes, two ears, one nose, and one mouth. My teacher says: 'Touch your hair!' and 'Open your eyes!'. My hobby is swimming and playing football. My friend, Ben, likes cooking.”", q: "8. Nam's teacher says 'Touch your nose!'.", ans: "False" },
+                    { passage: "📖 Đoạn văn 2:\n“Hi, I am Nam. I am nine years old. Look at my body! I have two eyes, two ears, one nose, and one mouth. My teacher says: 'Touch your hair!' and 'Open your eyes!'. My hobby is swimming and playing football. My friend, Ben, likes cooking.”", q: "9. Nam's hobby is swimming and playing football.", ans: "True" },
+                    { passage: "📖 Đoạn văn 2:\n“Hi, I am Nam. I am nine years old. Look at my body! I have two eyes, two ears, one nose, and one mouth. My teacher says: 'Touch your hair!' and 'Open your eyes!'. My hobby is swimming and playing football. My friend, Ben, likes cooking.”", q: "10. Ben likes cooking.", ans: "True" },
+                    // Đoạn 3 (11-15)
+                    { passage: "📖 Đoạn văn 3:\n“Hello, I am Lucy. This is my friend, Bill. We are in the school gym now. Our gym is big. Bill likes running and walking. Let me show you our art room! It is next to the library. We like our school very much.”", q: "11. Lucy and Bill are in the library now.", ans: "False" },
+                    { passage: "📖 Đoạn văn 3:\n“Hello, I am Lucy. This is my friend, Bill. We are in the school gym now. Our gym is big. Bill likes running and walking. Let me show you our art room! It is next to the library. We like our school very much.”", q: "12. Their school gym is big.", ans: "True" },
+                    { passage: "📖 Đoạn văn 3:\n“Hello, I am Lucy. This is my friend, Bill. We are in the school gym now. Our gym is big. Bill likes running and walking. Let me show you our art room! It is next to the library. We like our school very much.”", q: "13. Bill likes running and walking.", ans: "True" },
+                    { passage: "📖 Đoạn văn 3:\n“Hello, I am Lucy. This is my friend, Bill. We are in the school gym now. Our gym is big. Bill likes running and walking. Let me show you our art room! It is next to the library. We like our school very much.”", q: "14. The art room is next to the computer room.", ans: "False" },
+                    { passage: "📖 Đoạn văn 3:\n“Hello, I am Lucy. This is my friend, Bill. We are in the school gym now. Our gym is big. Bill likes running and walking. Let me show you our art room! It is next to the library. We like our school very much.”", q: "15. Lucy and Bill like their school.", ans: "True" }
+                ]
+            },
+            {
+                id: 6,
+                code: "PHẦN VI",
+                title: "Sắp Xếp Từ Thành Câu",
+                subtitle: "20 Câu • Ghép thẻ từ đúng ngữ pháp",
+                icon: "🧩",
+                color: "from-fuchsia-500 to-pink-600",
+                badgeBg: "bg-fuchsia-100 text-fuchsia-700",
+                type: "unscramble",
+                questions: [
+                    { words: ["name's", "Hello,", "My", "Minh."], ans: "Hello, My name's Minh." },
+                    { words: ["are", "How", "you?", "-", "thank", "Fine,", "you."], ans: "How are you? - Fine, thank you." },
+                    { words: ["your", "name?", "What's", "-", "name's", "My", "Mary."], ans: "What's your name? - My name's Mary." },
+                    { words: ["spell", "do", "How", "you", "name?", "your"], ans: "How do you spell your name?" },
+                    { words: ["years", "old", "I'm", "eight."], ans: "I'm eight years old." },
+                    { words: ["old", "is", "How", "sister?", "your"], ans: "How old is your sister?" },
+                    { words: ["my", "This", "friend,", "Ben.", "is"], ans: "This is my friend, Ben." },
+                    { words: ["Mr Long.", "That", "is", "teacher,", "my"], ans: "That is my teacher, Mr Long." },
+                    { words: ["Mai?", "Is", "this", "-", "it", "Yes,", "is."], ans: "Is this Mai? - Yes, it is." },
+                    { words: ["Linh?", "Is", "that", "-", "isn't.", "No,", "it"], ans: "Is that Linh? - No, it isn't." },
+                    { words: ["this?", "What's", "-", "ear.", "It's", "an"], ans: "What's this? - It's an ear." },
+                    { words: ["that?", "What's", "-", "a", "It's", "hand."], ans: "What's that? - It's a hand." },
+                    { words: ["your", "Touch", "hair,", "please!"], ans: "Touch your hair, please!" },
+                    { words: ["mouth!", "Open", "your", "please,"], ans: "Open your mouth, please!" },
+                    { words: ["hobby?", "What's", "your", "-", "It's", "cooking."], ans: "What's your hobby? - It's cooking." },
+                    { words: ["drawing", "pictures.", "like", "I"], ans: "I like drawing pictures." },
+                    { words: ["our", "Is", "classroom?", "this"], ans: "Is this our classroom?" },
+                    { words: ["go", "the", "Let's", "to", "library!"], ans: "Let's go to the library!" },
+                    { words: ["art", "to", "the", "room.", "Let's", "go"], ans: "Let's go to the art room." },
+                    { words: ["computer", "room.", "That", "is", "our"], ans: "That is our computer room." }
+                ]
             }
         ];
 
-        let currentSlide = 0;
-        let slideInterval = null;
-        const SLIDE_DURATION = 6000;
-        let isPaused = false;
-        let isAudioPlaying = false;
-        let synth = null;
-        let isCandleBlown = false;
-        let countdownTimer = null;
+        // =========================================================================
+        // QUẢN LÝ TRẠNG THÁI & LƯU TRỮ LOCALSTORAGE
+        // =========================================================================
+        const STORAGE_KEY = "cam_tien_english3_saga_v1";
+        let state = {
+            parts: {}
+        };
 
-        // Cấu hình mốc thời gian mở link: 00:00 ngày 12/11/2026
-        const TARGET_LOCK_TIME = new Date('2026-11-12T00:00:00').getTime();
+        let currentPartId = null;
+        let currentLevelIdx = 0;
+        let currentWrongCount = 0;
+        let selectedUnscrambleWords = [];
 
-        function createSparkles() {
-            const container = document.getElementById('sparkles-container');
-            const items = ['✨', '💖', '🌸', '⭐', '🎈', '❄️', '🎀'];
-            for (let i = 0; i < 30; i++) {
-                const el = document.createElement('div');
-                el.className = 'sparkle';
-                el.innerText = items[Math.floor(Math.random() * items.length)];
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.animationDuration = (Math.random() * 6 + 6) + 's';
-                el.style.animationDelay = (Math.random() * 5) + 's';
-                el.style.fontSize = (Math.random() * 14 + 14) + 'px';
-                container.appendChild(el);
+        function initState() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try {
+                    state = JSON.parse(saved);
+                } catch (e) {
+                    state = { parts: {} };
+                }
             }
-        }
-
-        /* -------------------------------------------------------------
-           XỬ LÝ KIỂM TRA THỜI GIAN VÀ ĐẾM NGƯỢC
-        ------------------------------------------------------------- */
-        function handleStartClick() {
-            const now = new Date().getTime();
-
-            // Nếu CHƯA đến mốc 00:00:00 12/11/2026
-            if (now < TARGET_LOCK_TIME) {
-                showCountdownScreen();
-            } else {
-                // Đã đến thời gian quy định -> Chạy hiệu ứng bánh rơi & vào giao diện sinh nhật
-                runCakeAnimation();
-            }
-        }
-
-        function showCountdownScreen() {
-            const countdownBox = document.getElementById('countdown-box');
-            const statusText = document.getElementById('intro-status-text');
-
-            countdownBox.classList.remove('hidden');
-            statusText.innerText = "⏳ Chưa tới giờ mở quà đâu nhé! Hãy kiên nhẫn chờ đếm ngược nha ✨";
-
-            updateCountdown();
-            if (!countdownTimer) {
-                countdownTimer = setInterval(updateCountdown, 1000);
-            }
-        }
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = TARGET_LOCK_TIME - now;
-
-            if (distance <= 0) {
-                clearInterval(countdownTimer);
-                document.getElementById('countdown-box').classList.add('hidden');
-                document.getElementById('start-animation-btn').classList.remove('hidden');
-                document.getElementById('intro-status-text').innerText = "🎉 Đã đến giờ rồi! Nhấn nút để mở quà thôi nào!";
-                runCakeAnimation();
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-            document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
-        }
-
-        /* -------------------------------------------------------------
-           HIỆU ỨNG INTRO: BÁNH RƠI 3 TẦNG -> NẾN SỐ 8 -> VÀO TRANG CHÍNH
-        ------------------------------------------------------------- */
-        function runCakeAnimation() {
-            // Phát nhạc ngay khi click
-            playBirthdayTune();
-
-            const startBtn = document.getElementById('start-animation-btn');
-            const countdownBox = document.getElementById('countdown-box');
-            const statusText = document.getElementById('intro-status-text');
-            const cakeContainer = document.getElementById('cake-animation-container');
-            const cakeBase = document.getElementById('cake-base');
-            const layer1 = document.getElementById('layer-1');
-            const layer2 = document.getElementById('layer-2');
-            const layer3 = document.getElementById('layer-3');
-            const candle = document.getElementById('intro-candle');
-            const flame = document.getElementById('intro-flame');
-
-            // Ẩn nút bắt đầu & đếm ngược, hiện container bánh
-            startBtn.classList.add('hidden');
-            countdownBox.classList.add('hidden');
-            statusText.innerText = "🎂 Đang chuẩn bị chiếc bánh tuổi 8 đặc biệt...";
-            cakeContainer.classList.remove('hidden');
-            cakeContainer.classList.add('flex');
-            cakeBase.classList.remove('opacity-0');
-
-            // Bước 1: Tầng đáy rơi xuống
-            setTimeout(() => {
-                layer1.classList.add('drop-in');
-            }, 300);
-
-            // Bước 2: Tầng giữa rơi xuống
-            setTimeout(() => {
-                layer2.classList.add('drop-in');
-            }, 1000);
-
-            // Bước 3: Tầng trên cùng rơi xuống
-            setTimeout(() => {
-                layer3.classList.add('drop-in');
-            }, 1700);
-
-            // Bước 4: Hiển thị nến số 8
-            setTimeout(() => {
-                candle.classList.add('show');
-                statusText.innerText = "🕯️ Thắp nến số 8 mừng sinh nhật Cẩm Tiên...";
-            }, 2500);
-
-            // Bước 5: Thắp ngọn lửa nến
-            setTimeout(() => {
-                flame.classList.remove('opacity-0');
-                triggerConfettiBurst();
-            }, 3200);
-
-            // Bước 6: Chuyển sang giao diện rực rỡ đầy đủ
-            setTimeout(() => {
-                statusText.innerText = "✨ Chào mừng Cẩm Tiên đến với bữa tiệc! ✨";
-                setTimeout(() => {
-                    transitionToMainHub();
-                }, 800);
-            }, 4200);
-        }
-
-        function transitionToMainHub() {
-            const welcomeScreen = document.getElementById('welcome-screen');
-            const mainContent = document.getElementById('main-content');
-
-            welcomeScreen.classList.add('opacity-0');
-            setTimeout(() => {
-                welcomeScreen.style.display = 'none';
-                mainContent.classList.remove('hidden');
-                setTimeout(() => {
-                    mainContent.classList.add('opacity-100');
-                }, 50);
-            }, 1000);
-
-            initStoryProgress();
-            renderSlide(0);
-            startAutoSlide();
-            updateTimeCounter();
-        }
-
-        /* -------------------------------------------------------------
-           NHẠC & TONE.JS
-        ------------------------------------------------------------- */
-        function playBirthdayTune() {
-            try {
-                Tone.start();
-                synth = new Tone.PolySynth(Tone.Synth).toDestination();
-                synth.volume.value = -8;
-
-                const notes = [
-                    { note: "G4", dur: "8n", time: 0 },
-                    { note: "G4", dur: "8n", time: 0.25 },
-                    { note: "A4", dur: "4n", time: 0.5 },
-                    { note: "G4", dur: "4n", time: 1.0 },
-                    { note: "C5", dur: "4n", time: 1.5 },
-                    { note: "B4", dur: "2n", time: 2.0 },
-
-                    { note: "G4", dur: "8n", time: 2.75 },
-                    { note: "G4", dur: "8n", time: 3.0 },
-                    { note: "A4", dur: "4n", time: 3.25 },
-                    { note: "G4", dur: "4n", time: 3.75 },
-                    { note: "D5", dur: "4n", time: 4.25 },
-                    { note: "C5", dur: "2n", time: 4.75 },
-
-                    { note: "G4", dur: "8n", time: 5.5 },
-                    { note: "G4", dur: "8n", time: 5.75 },
-                    { note: "G5", dur: "4n", time: 6.0 },
-                    { note: "E5", dur: "4n", time: 6.5 },
-                    { note: "C5", dur: "4n", time: 7.0 },
-                    { note: "B4", dur: "4n", time: 7.5 },
-                    { note: "A4", dur: "2n", time: 8.0 },
-
-                    { note: "F5", dur: "8n", time: 8.75 },
-                    { note: "F5", dur: "8n", time: 9.0 },
-                    { note: "E5", dur: "4n", time: 9.25 },
-                    { note: "C5", dur: "4n", time: 9.75 },
-                    { note: "D5", dur: "4n", time: 10.25 },
-                    { note: "C5", dur: "2n", time: 10.75 }
-                ];
-
-                const loop = new Tone.Part((time, value) => {
-                    synth.triggerAttackRelease(value.note, value.dur, time);
-                }, notes);
-
-                loop.loop = true;
-                loop.loopEnd = "12s";
-                loop.start(0);
-
-                Tone.Transport.start();
-                isAudioPlaying = true;
-                updateAudioUI();
-            } catch (e) {
-                console.log("Audio play error", e);
-            }
-        }
-
-        function toggleAudio() {
-            if (isAudioPlaying) {
-                Tone.Transport.pause();
-                isAudioPlaying = false;
-            } else {
-                Tone.Transport.start();
-                isAudioPlaying = true;
-            }
-            updateAudioUI();
-        }
-
-        function updateAudioUI() {
-            const musicIcon = document.getElementById('music-icon');
-            const musicText = document.getElementById('music-text');
-            if (!musicIcon || !musicText) return;
-            if (isAudioPlaying) {
-                musicIcon.className = "fas fa-music text-purple-500 animate-spin";
-                musicText.innerText = "Đang phát nhạc 🎵";
-            } else {
-                musicIcon.className = "fas fa-volume-mute text-gray-400";
-                musicText.innerText = "Đã tắt nhạc 🔇";
-            }
-        }
-
-        /* -------------------------------------------------------------
-           SLIDESHOW LOGIC
-        ------------------------------------------------------------- */
-        function initStoryProgress() {
-            const container = document.getElementById('story-progress-container');
-            container.innerHTML = '';
-            slides.forEach((_, idx) => {
-                const barBg = document.createElement('div');
-                barBg.className = 'h-1.5 flex-1 bg-purple-200/80 rounded-full overflow-hidden';
-                
-                const barFill = document.createElement('div');
-                barFill.id = `progress-fill-${idx}`;
-                barFill.className = 'h-full bg-purple-600 progress-bar-fill w-0';
-                
-                barBg.appendChild(barFill);
-                container.appendChild(barBg);
+            QUIZ_DATA.forEach(part => {
+                if (!state.parts[part.id]) {
+                    state.parts[part.id] = {
+                        unlockedIndex: 0,
+                        startTime: null,
+                        endTime: null,
+                        records: {} // index -> { status: 'passed'|'failed_skip', userAnswer: string, attempts: number }
+                    };
+                }
             });
+            saveState();
         }
 
-        function renderSlide(index) {
-            const data = slides[index];
-            const slideBody = document.getElementById('slide-body');
-            const slideCounter = document.getElementById('slide-counter');
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            updateGlobalStars();
+        }
 
-            slideCounter.innerText = `${index + 1}/${slides.length}`;
+        function updateGlobalStars() {
+            let totalPassed = 0;
+            QUIZ_DATA.forEach(p => {
+                const recs = state.parts[p.id]?.records || {};
+                Object.values(recs).forEach(r => {
+                    if (r.status === 'passed') totalPassed++;
+                });
+            });
+            document.getElementById("total-stars-badge").textContent = `${totalPassed} / 140`;
+        }
 
-            slideBody.style.opacity = 0;
-            slideBody.style.transform = "scale(0.95)";
+        // Hàm xáo trộn mảng (Fisher-Yates Shuffle)
+        function shuffleArray(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
 
-            setTimeout(() => {
-                slideBody.innerHTML = `
-                    <div class="w-full bg-gradient-to-br ${data.bgGradient} p-5 sm:p-8 rounded-2xl border border-white shadow-inner flex flex-col items-center">
-                        <div class="flex justify-center items-center space-x-3 text-2xl sm:text-3xl mb-3 animate-bounce">
-                            ${data.stickers.map(s => `<span class="transform hover:scale-125 transition-transform cursor-default">${s}</span>`).join('')}
+        // Định dạng thời gian đẹp
+        function formatDateTime(isoString) {
+            if (!isoString) return "Chưa ghi nhận";
+            const d = new Date(isoString);
+            return d.toLocaleTimeString('vi-VN', { hour12: false }) + " - " + d.toLocaleDateString('vi-VN');
+        }
+
+        function formatDuration(startIso, endIso) {
+            if (!startIso) return "0 phút 0 giây";
+            const start = new Date(startIso).getTime();
+            const end = endIso ? new Date(endIso).getTime() : Date.now();
+            const diffSec = Math.max(1, Math.floor((end - start) / 1000));
+            const mins = Math.floor(diffSec / 60);
+            const secs = diffSec % 60;
+            return `${mins} phút ${secs} giây`;
+        }
+
+        // =========================================================================
+        // RENDER TRANG CHỦ 6 PHẦN
+        // =========================================================================
+        function renderHome() {
+            const grid = document.getElementById("parts-grid");
+            grid.innerHTML = "";
+
+            QUIZ_DATA.forEach(part => {
+                const pState = state.parts[part.id];
+                const totalQ = part.questions.length;
+                let passedCount = 0;
+                let completedCount = Object.keys(pState.records).length;
+                Object.values(pState.records).forEach(r => {
+                    if (r.status === 'passed') passedCount++;
+                });
+
+                const pct = Math.round((completedCount / totalQ) * 100);
+
+                const card = document.createElement("div");
+                card.className = "candy-card p-6 flex flex-col justify-between cursor-pointer group";
+                card.onclick = () => openPartMap(part.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3.5 py-1 rounded-full text-xs font-black tracking-wide ${part.badgeBg}">
+                                ${part.code}
+                            </span>
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${part.color} text-white text-2xl flex items-center justify-center shadow-md group-hover:scale-110 transition">
+                                ${part.icon}
+                            </div>
                         </div>
-                        <div class="text-6xl sm:text-7xl mb-4 transform hover:rotate-12 transition-transform duration-300 filter drop-shadow-md">
-                            ${data.emoji}
-                        </div>
-                        <h2 class="font-dancing text-2xl sm:text-4xl font-bold ${data.accentColor} mb-1">
-                            ${data.title}
-                        </h2>
-                        <h4 class="font-comfortaa text-xs sm:text-sm font-semibold text-gray-600 mb-4">
-                            ${data.subtitle}
-                        </h4>
-                        <p class="font-nunito text-sm sm:text-base text-gray-700 max-w-lg leading-relaxed font-medium">
-                            "${data.message}"
+                        <h3 class="text-xl font-black text-slate-800 group-hover:text-pink-600 transition">
+                            ${part.title}
+                        </h3>
+                        <p class="text-sm font-bold text-slate-500 mt-1">
+                            ${part.subtitle}
                         </p>
                     </div>
+
+                    <div class="mt-6">
+                        <div class="flex justify-between text-xs font-extrabold mb-1.5">
+                            <span class="text-slate-600">Đạt sao: <b class="text-amber-600">⭐ ${passedCount}/${totalQ}</b></span>
+                            <span class="text-pink-600">${pct}% hoàn thành</span>
+                        </div>
+                        <div class="w-full h-3.5 bg-slate-200 rounded-full overflow-hidden p-0.5">
+                            <div class="h-full rounded-full bg-gradient-to-r ${part.color} transition-all duration-500" style="width: ${pct}%"></div>
+                        </div>
+                        <button class="w-full mt-4 btn-candy btn-pink py-2.5 text-sm">
+                            ${completedCount > 0 ? "🚀 Tiếp tục chinh phục" : "🎮 Bắt đầu chơi"}
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function goHome() {
+            document.getElementById("screen-map").classList.add("hidden");
+            document.getElementById("modal-play").classList.add("hidden");
+            document.getElementById("modal-result").classList.add("hidden");
+            document.getElementById("screen-home").classList.remove("hidden");
+            document.getElementById("btn-home-nav").classList.add("hidden");
+            renderHome();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // =========================================================================
+        // BẢN ĐỒ CANDY CRUSH SAGA MAP CHO TỪNG PHẦN
+        // =========================================================================
+        function openPartMap(partId) {
+            currentPartId = partId;
+            const part = QUIZ_DATA.find(p => p.id === partId);
+            const pState = state.parts[partId];
+
+            if (!pState.startTime) {
+                pState.startTime = new Date().toISOString();
+                saveState();
+            }
+
+            document.getElementById("screen-home").classList.add("hidden");
+            document.getElementById("screen-map").classList.remove("hidden");
+            document.getElementById("btn-home-nav").classList.remove("hidden");
+
+            document.getElementById("map-part-badge").textContent = part.code;
+            document.getElementById("map-part-title").textContent = part.title;
+
+            const helper = document.getElementById("map-reading-helper");
+            if (part.type === "true_false") helper.classList.remove("hidden");
+            else helper.classList.add("hidden");
+
+            renderSagaNodes();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderSagaNodes() {
+            const part = QUIZ_DATA.find(p => p.id === currentPartId);
+            const pState = state.parts[currentPartId];
+            const container = document.getElementById("saga-map-nodes");
+            container.innerHTML = "";
+
+            const completedCount = Object.keys(pState.records).length;
+            document.getElementById("map-progress-text").textContent = `${completedCount}/${part.questions.length}`;
+
+            // Tạo đường uốn lượn hình sin giống Candy Crush
+            const offsets = [0, 65, 105, 65, 0, -65, -105, -65];
+
+            part.questions.forEach((q, idx) => {
+                const wrapper = document.createElement("div");
+                wrapper.className = "saga-node-wrapper";
+                const shiftX = offsets[idx % offsets.length];
+                wrapper.style.transform = `translateX(${shiftX}px)`;
+
+                const rec = pState.records[idx];
+                const isUnlocked = idx <= pState.unlockedIndex;
+                const isCurrent = idx === pState.unlockedIndex && !rec;
+
+                let nodeClass = "node-locked";
+                let subIcon = "🔒";
+
+                if (rec) {
+                    if (rec.status === "passed") {
+                        nodeClass = "node-passed";
+                        subIcon = "⭐";
+                    } else {
+                        nodeClass = "node-failed-skip";
+                        subIcon = "⚡";
+                    }
+                } else if (isCurrent || isUnlocked) {
+                    nodeClass = "node-current";
+                    subIcon = "▶";
+                }
+
+                const node = document.createElement("button");
+                node.className = `saga-node ${nodeClass}`;
+                node.innerHTML = `
+                    <span class="leading-none">${idx + 1}</span>
+                    <span class="text-xs mt-0.5">${subIcon}</span>
                 `;
 
-                slideBody.style.opacity = 1;
-                slideBody.style.transform = "scale(1)";
-            }, 200);
-
-            for (let i = 0; i < slides.length; i++) {
-                const fill = document.getElementById(`progress-fill-${i}`);
-                if (fill) {
-                    fill.style.width = i <= index ? (i < index ? '100%' : '0%') : '0%';
-                }
-            }
-        }
-
-        function startAutoSlide() {
-            clearInterval(slideInterval);
-            let startTime = Date.now();
-            
-            slideInterval = setInterval(() => {
-                if (isPaused) return;
-
-                const elapsedTime = Date.now() - startTime;
-                const percentage = Math.min((elapsedTime / SLIDE_DURATION) * 100, 100);
-                
-                const currentFill = document.getElementById(`progress-fill-${currentSlide}`);
-                if (currentFill) {
-                    currentFill.style.width = `${percentage}%`;
+                if (isUnlocked) {
+                    node.onclick = () => startLevel(idx);
+                } else {
+                    node.onclick = () => {
+                        node.classList.add("animate-shake");
+                        setTimeout(() => node.classList.remove("animate-shake"), 500);
+                    };
                 }
 
-                if (elapsedTime >= SLIDE_DURATION) {
-                    nextSlide();
-                    startTime = Date.now();
+                // Nhãn "Đang ở đây" cho màn hiện tại
+                if (isCurrent) {
+                    const pointer = document.createElement("div");
+                    pointer.className = "absolute -top-8 bg-yellow-300 text-slate-900 font-black text-xs px-2.5 py-0.5 rounded-full shadow border-2 border-white whitespace-nowrap animate-bounce";
+                    pointer.textContent = "Chơi ngay!";
+                    node.appendChild(pointer);
                 }
-            }, 50);
+
+                wrapper.appendChild(node);
+                container.appendChild(wrapper);
+            });
         }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            renderSlide(currentSlide);
-            startAutoSlide();
+        function resetCurrentPart() {
+            if (!confirm("Cẩm Tiên có chắc muốn làm lại từ Màn 1 của phần này không?")) return;
+            state.parts[currentPartId] = {
+                unlockedIndex: 0,
+                startTime: new Date().toISOString(),
+                endTime: null,
+                records: {}
+            };
+            saveState();
+            renderSagaNodes();
         }
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            renderSlide(currentSlide);
-            startAutoSlide();
-        }
+        // =========================================================================
+        // LOGIC CHƠI TỪNG MÀN (3 TIM, SAI LÀM LẠI, SAI 3 LẦN QUA MÀN)
+        // =========================================================================
+        function startLevel(idx) {
+            currentLevelIdx = idx;
+            currentWrongCount = 0;
+            selectedUnscrambleWords = [];
 
-        function togglePauseStory() {
-            isPaused = !isPaused;
-            const pauseIcon = document.getElementById('pause-icon');
-            const pauseText = document.getElementById('pause-text');
-            if (isPaused) {
-                pauseIcon.className = "fas fa-play";
-                pauseText.innerText = "Tiếp tục";
+            const part = QUIZ_DATA.find(p => p.id === currentPartId);
+            const qObj = part.questions[idx];
+
+            document.getElementById("modal-play").classList.remove("hidden");
+            document.getElementById("play-level-badge").textContent = `MÀN ${idx + 1} / ${part.questions.length}`;
+            document.getElementById("play-type-label").textContent = part.title;
+
+            // Reset 3 trái tim
+            updateHeartsUI();
+
+            // Ẩn feedback cũ
+            const fb = document.getElementById("play-feedback");
+            fb.classList.add("hidden");
+            fb.innerHTML = "";
+
+            // Context / Passage nếu có
+            const ctxBox = document.getElementById("play-context-box");
+            if (qObj.passage || qObj.context) {
+                ctxBox.classList.remove("hidden");
+                ctxBox.innerText = qObj.passage || qObj.context;
             } else {
-                pauseIcon.className = "fas fa-pause";
-                pauseText.innerText = "Tạm dừng";
+                ctxBox.classList.add("hidden");
+            }
+
+            const qText = document.getElementById("play-question-text");
+            const qHint = document.getElementById("play-question-hint");
+            const area = document.getElementById("play-interaction-area");
+            area.innerHTML = "";
+            qHint.classList.add("hidden");
+
+            // 1. TRẮC NGHIỆM KHÁCH QUAN & NỐI CÂU (Xáo trộn phương án, KHÔNG hiển thị A, B, C, D)
+            if (part.type === "mcq" || part.type === "matching_mcq") {
+                qText.textContent = qObj.q;
+                const shuffledOptions = shuffleArray(qObj.options);
+
+                const grid = document.createElement("div");
+                grid.className = "grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-2";
+
+                shuffledOptions.forEach(opt => {
+                    const btn = document.createElement("button");
+                    btn.className = "btn-option p-4 text-left sm:text-center text-base sm:text-lg";
+                    btn.textContent = opt; // Tuyệt đối không gắn A., B., C., D.
+                    btn.onclick = () => handleAnswerSubmit(opt, btn);
+                    grid.appendChild(btn);
+                });
+                area.appendChild(grid);
+            }
+
+            // 2. HOÀN THIỆN TỪ VỰNG (ĐIỀN CHỮ CÁI CÒN THIẾU)
+            else if (part.type === "missing_letter") {
+                qText.innerHTML = `Điền chữ cái còn thiếu: <span class="text-pink-600 tracking-widest bg-pink-50 px-3 py-1 rounded-xl border-2 border-pink-200 inline-block mt-1">${qObj.display}</span>`;
+                qHint.textContent = `💡 Nghĩa tiếng Việt: (${qObj.meaning})`;
+                qHint.classList.remove("hidden");
+
+                // Tạo bàn phím 8 chữ cái gợi ý (gồm đáp án đúng + 7 chữ ngẫu nhiên)
+                const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+                const distractors = shuffleArray(alphabet.filter(c => c !== qObj.ans.toLowerCase())).slice(0, 7);
+                const choices = shuffleArray([qObj.ans.toLowerCase(), ...distractors]);
+
+                const wrap = document.createElement("div");
+                wrap.innerHTML = `
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <input id="missing-letter-input" type="text" maxlength="1" placeholder="?" 
+                            class="w-16 h-16 text-center text-3xl font-black uppercase border-4 border-sky-400 rounded-2xl focus:outline-none focus:border-pink-500 text-pink-600 bg-sky-50" />
+                        <button onclick="submitInputLetter()" class="btn-candy btn-green px-6 h-16 text-lg">
+                            Kiểm tra ✔
+                        </button>
+                    </div>
+                    <p class="text-xs font-extrabold text-slate-400 text-center mb-2">Hoặc bấm chọn nhanh chữ cái bên dưới:</p>
+                `;
+
+                const keyGrid = document.createElement("div");
+                keyGrid.className = "grid grid-cols-4 gap-2.5 max-w-md mx-auto";
+                choices.forEach(ch => {
+                    const btn = document.createElement("button");
+                    btn.className = "btn-option py-3 text-xl font-black lowercase";
+                    btn.textContent = ch;
+                    btn.onclick = () => {
+                        document.getElementById("missing-letter-input").value = ch;
+                        handleAnswerSubmit(ch, btn);
+                    };
+                    keyGrid.appendChild(btn);
+                });
+
+                wrap.appendChild(keyGrid);
+                area.appendChild(wrap);
+
+                setTimeout(() => {
+                    const inp = document.getElementById("missing-letter-input");
+                    if (inp) {
+                        inp.focus();
+                        inp.addEventListener("keypress", (e) => {
+                            if (e.key === "Enter") submitInputLetter();
+                        });
+                    }
+                }, 100);
+            }
+
+            // 3. CHỌN TỪ TRONG KHUNG ĐIỀN VÀO CHỖ TRỐNG
+            else if (part.type === "word_bank") {
+                qText.textContent = qObj.q;
+                qHint.textContent = "👇 Chọn 1 từ thích hợp trong khung bên dưới để điền vào chỗ trống:";
+                qHint.classList.remove("hidden");
+
+                const shuffledBank = shuffleArray(qObj.bank);
+                const bankDiv = document.createElement("div");
+                bankDiv.className = "flex flex-wrap justify-center gap-2.5 bg-slate-50 p-4 rounded-2xl border-2 border-slate-200";
+
+                shuffledBank.forEach(word => {
+                    const btn = document.createElement("button");
+                    btn.className = "word-chip";
+                    btn.textContent = word;
+                    btn.onclick = () => handleAnswerSubmit(word, btn);
+                    bankDiv.appendChild(btn);
+                });
+                area.appendChild(bankDiv);
+            }
+
+            // 4. ĐỌC HIỂU TRUE / FALSE
+            else if (part.type === "true_false") {
+                qText.textContent = qObj.q;
+                const grid = document.createElement("div");
+                grid.className = "grid grid-cols-2 gap-4 mt-3";
+
+                const opts = [
+                    { val: "True", label: "True (Đúng) ✅", cls: "border-emerald-300 hover:bg-emerald-50 text-emerald-700" },
+                    { val: "False", label: "False (Sai) ❌", cls: "border-rose-300 hover:bg-rose-50 text-rose-700" }
+                ];
+
+                opts.forEach(o => {
+                    const btn = document.createElement("button");
+                    btn.className = `btn-option p-5 text-lg sm:text-xl font-black ${o.cls}`;
+                    btn.textContent = o.label;
+                    btn.onclick = () => handleAnswerSubmit(o.val, btn);
+                    grid.appendChild(btn);
+                });
+                area.appendChild(grid);
+            }
+
+            // 5. SẮP XẾP TỪ THÀNH CÂU HOÀN CHỈNH
+            else if (part.type === "unscramble") {
+                qText.textContent = "Sắp xếp các từ sau thành câu hoàn chỉnh:";
+                const shuffledWords = shuffleArray(qObj.words.map((w, i) => ({ id: i, text: w })));
+
+                const container = document.createElement("div");
+                container.className = "space-y-4";
+
+                // Vùng hiển thị câu bé đang ghép
+                const dropZone = document.createElement("div");
+                dropZone.id = "unscramble-dropzone";
+                dropZone.className = "min-h-[68px] p-3.5 bg-indigo-50 border-3 border-dashed border-indigo-300 rounded-2xl flex flex-wrap items-center gap-2";
+                dropZone.innerHTML = `<span class="text-indigo-400 font-bold text-sm">Bấm vào từng thẻ từ bên dưới để xếp thành câu...</span>`;
+
+                // Vùng chứa các thẻ từ nguồn
+                const poolZone = document.createElement("div");
+                poolZone.id = "unscramble-poolzone";
+                poolZone.className = "flex flex-wrap justify-center gap-2.5 p-3 bg-slate-50 rounded-2xl border-2 border-slate-200";
+
+                const renderUnscrambleZones = () => {
+                    dropZone.innerHTML = "";
+                    if (selectedUnscrambleWords.length === 0) {
+                        dropZone.innerHTML = `<span class="text-indigo-400 font-bold text-sm">Bấm vào từng thẻ từ bên dưới để xếp thành câu...</span>`;
+                    } else {
+                        selectedUnscrambleWords.forEach((item, sIdx) => {
+                            const chip = document.createElement("button");
+                            chip.className = "word-chip selected-chip";
+                            chip.textContent = item.text;
+                            chip.onclick = () => {
+                                selectedUnscrambleWords.splice(sIdx, 1);
+                                renderUnscrambleZones();
+                            };
+                            dropZone.appendChild(chip);
+                        });
+                    }
+
+                    poolZone.innerHTML = "";
+                    shuffledWords.forEach(item => {
+                        const isUsed = selectedUnscrambleWords.some(s => s.id === item.id);
+                        const chip = document.createElement("button");
+                        chip.className = `word-chip ${isUsed ? "opacity-30 pointer-events-none" : ""}`;
+                        chip.textContent = item.text;
+                        chip.onclick = () => {
+                            selectedUnscrambleWords.push(item);
+                            renderUnscrambleZones();
+                        };
+                        poolZone.appendChild(chip);
+                    });
+                };
+
+                renderUnscrambleZones();
+
+                const actionRow = document.createElement("div");
+                actionRow.className = "flex justify-center gap-3 pt-2";
+                actionRow.innerHTML = `
+                    <button id="btn-clear-unscramble" class="btn-candy bg-slate-200 text-slate-700 px-5 py-3 text-sm">
+                        🔄 Xếp lại
+                    </button>
+                    <button id="btn-check-unscramble" class="btn-candy btn-green px-7 py-3 text-base">
+                        Kiểm tra câu ✔
+                    </button>
+                `;
+
+                container.appendChild(dropZone);
+                container.appendChild(poolZone);
+                container.appendChild(actionRow);
+                area.appendChild(container);
+
+                document.getElementById("btn-clear-unscramble").onclick = () => {
+                    selectedUnscrambleWords = [];
+                    renderUnscrambleZones();
+                };
+
+                document.getElementById("btn-check-unscramble").onclick = () => {
+                    if (selectedUnscrambleWords.length === 0) return;
+                    const userSentence = selectedUnscrambleWords.map(w => w.text).join(" ");
+                    handleAnswerSubmit(userSentence, document.getElementById("btn-check-unscramble"));
+                };
             }
         }
 
-        function updateTimeCounter() {
-            const birthDate = new Date('2018-11-12T00:00:00');
-            const targetDate = new Date('2026-11-12T00:00:00');
-            const diffMs = targetDate - birthDate;
-
-            const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(diffMs / (1000 * 60 * 60));
-            const minutes = Math.floor(diffMs / (1000 * 60));
-
-            document.getElementById('count-years').innerText = 8;
-            document.getElementById('count-days').innerText = days.toLocaleString();
-            document.getElementById('count-hours').innerText = hours.toLocaleString();
-            document.getElementById('count-minutes').innerText = minutes.toLocaleString();
+        function submitInputLetter() {
+            const inp = document.getElementById("missing-letter-input");
+            if (!inp || !inp.value.trim()) return;
+            handleAnswerSubmit(inp.value.trim().toLowerCase(), inp);
         }
 
-        function blowOutCandles() {
-            if (isCandleBlown) return;
-            
-            isCandleBlown = true;
+        function updateHeartsUI() {
             for (let i = 1; i <= 3; i++) {
-                const flame = document.getElementById(`flame-${i}`);
-                const smoke = document.getElementById(`smoke-${i}`);
-                if (flame) flame.classList.add('extinguished');
-                if (smoke) smoke.style.display = 'block';
-            }
-
-            document.getElementById('wish-message').classList.remove('hidden');
-            document.getElementById('blow-btn').innerText = "✨ Đã Thổi Nến & Nhận Điều Ước ✨";
-            document.getElementById('blow-btn').classList.replace('from-yellow-400', 'from-green-400');
-
-            triggerConfettiBurst();
-            spawnHearts();
-        }
-
-        function scrollToCake() {
-            document.getElementById('cake-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function spawnHearts() {
-            const icons = ['💖', '🎈', '⭐', '🌸', '✨'];
-            for (let i = 0; i < 15; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'floating-bubble text-2xl sm:text-3xl';
-                bubble.innerText = icons[Math.floor(Math.random() * icons.length)];
-                bubble.style.left = Math.random() * 90 + 5 + 'vw';
-                bubble.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                document.body.appendChild(bubble);
-
-                setTimeout(() => bubble.remove(), 5000);
+                const h = document.getElementById(`heart-${i}`);
+                if (i > 3 - currentWrongCount) {
+                    h.classList.add("heart-lost");
+                } else {
+                    h.classList.remove("heart-lost");
+                }
             }
         }
 
-        function triggerConfettiBurst() {
-            confetti({
-                particleCount: 90,
-                spread: 80,
-                origin: { y: 0.6 },
-                colors: ['#ba68c8', '#f783ac', '#ffeb3b', '#64b5f6', '#ffffff']
+        function normalizeStr(s) {
+            return String(s).trim().replace(/\s+/g, " ").toLowerCase();
+        }
+
+        // Xử lý kiểm tra đáp án
+        function handleAnswerSubmit(userChoice, clickedEl) {
+            const part = QUIZ_DATA.find(p => p.id === currentPartId);
+            const qObj = part.questions[currentLevelIdx];
+            const pState = state.parts[currentPartId];
+            const fb = document.getElementById("play-feedback");
+            const playCard = document.getElementById("play-card");
+
+            const isCorrect = normalizeStr(userChoice) === normalizeStr(qObj.ans);
+
+            if (isCorrect) {
+                // Vô hiệu hóa các nút bấm để tránh bấm đúp
+                disableInteractionArea();
+
+                // Hiệu ứng pháo hoa ngọt ngào
+                confetti({
+                    particleCount: 65,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                fb.classList.remove("hidden", "bg-rose-100", "text-rose-700", "border-rose-300");
+                fb.classList.add("bg-emerald-100", "text-emerald-800", "border-2", "border-emerald-300");
+                const extraWord = part.type === "missing_letter" ? ` (Từ hoàn chỉnh: <b>${qObj.fullWord}</b>)` : "";
+                fb.innerHTML = `🎉 Xuất sắc Cẩm Tiên ơi! Chính xác rồi!${extraWord} ⭐`;
+
+                // Ghi nhận kết quả (nếu chưa từng hoàn thành hoặc đang làm lại)
+                if (!pState.records[currentLevelIdx] || pState.records[currentLevelIdx].status !== "passed") {
+                    pState.records[currentLevelIdx] = {
+                        status: "passed",
+                        userAnswer: userChoice,
+                        attempts: currentWrongCount + 1
+                    };
+                }
+
+                if (currentLevelIdx >= pState.unlockedIndex && currentLevelIdx + 1 < part.questions.length) {
+                    pState.unlockedIndex = currentLevelIdx + 1;
+                }
+
+                // Kiểm tra nếu đã xong toàn bộ phần này
+                if (Object.keys(pState.records).length === part.questions.length) {
+                    pState.endTime = new Date().toISOString();
+                }
+                saveState();
+
+                setTimeout(() => {
+                    if (currentLevelIdx + 1 < part.questions.length) {
+                        startLevel(currentLevelIdx + 1);
+                    } else {
+                        closePlayModal();
+                        openResultModal();
+                    }
+                }, 1300);
+
+            } else {
+                // TRẢ LỜI SAI
+                currentWrongCount++;
+                updateHeartsUI();
+
+                playCard.classList.remove("animate-shake");
+                void playCard.offsetWidth; // trigger reflow
+                playCard.classList.add("animate-shake");
+
+                if (clickedEl && clickedEl.classList.contains("btn-option")) {
+                    clickedEl.classList.add("!bg-rose-100", "!border-rose-400", "!text-rose-700");
+                }
+
+                const remaining = 3 - currentWrongCount;
+
+                if (remaining > 0) {
+                    // Bắt buộc phải trả lời lại
+                    fb.classList.remove("hidden", "bg-emerald-100", "text-emerald-800");
+                    fb.classList.add("bg-rose-100", "text-rose-700", "border-2", "border-rose-300");
+                    fb.innerHTML = `😅 Chưa đúng rồi! Bé hãy thử lại nhé (Còn <b>${remaining}</b> lượt thử)!`;
+                } else {
+                    // ĐÃ SAI TỐI ĐA 3 LẦN -> TỰ ĐỘNG CHUYỂN SANG CÂU KHÁC
+                    disableInteractionArea();
+                    fb.classList.remove("hidden");
+                    fb.classList.add("bg-amber-100", "text-amber-900", "border-2", "border-amber-400");
+                    const rightAnsDisplay = part.type === "missing_letter" ? `${qObj.ans} (${qObj.fullWord})` : qObj.ans;
+                    fb.innerHTML = `💡 Hết 3 lượt thử rồi! Đáp án đúng là: <b class="text-pink-600 underline">${rightAnsDisplay}</b>.<br><span class="text-xs">Hệ thống đang chuyển sang màn tiếp theo...</span>`;
+
+                    if (!pState.records[currentLevelIdx]) {
+                        pState.records[currentLevelIdx] = {
+                            status: "failed_skip",
+                            userAnswer: userChoice,
+                            attempts: 3
+                        };
+                    }
+
+                    if (currentLevelIdx >= pState.unlockedIndex && currentLevelIdx + 1 < part.questions.length) {
+                        pState.unlockedIndex = currentLevelIdx + 1;
+                    }
+
+                    if (Object.keys(pState.records).length === part.questions.length) {
+                        pState.endTime = new Date().toISOString();
+                    }
+                    saveState();
+
+                    setTimeout(() => {
+                        if (currentLevelIdx + 1 < part.questions.length) {
+                            startLevel(currentLevelIdx + 1);
+                        } else {
+                            closePlayModal();
+                            openResultModal();
+                        }
+                    }, 2400);
+                }
+            }
+        }
+
+        function disableInteractionArea() {
+            const buttons = document.querySelectorAll("#play-interaction-area button, #play-interaction-area input");
+            buttons.forEach(b => b.disabled = true);
+        }
+
+        function closePlayModal() {
+            document.getElementById("modal-play").classList.add("hidden");
+            renderSagaNodes();
+        }
+
+        // =========================================================================
+        // HIỂN THỊ BẢNG ĐIỂM & LỊCH SỬ CHI TIẾT BÀI LÀM
+        // =========================================================================
+        function openResultModal() {
+            const part = QUIZ_DATA.find(p => p.id === currentPartId);
+            const pState = state.parts[currentPartId];
+            const totalQ = part.questions.length;
+
+            let correctCount = 0;
+            Object.values(pState.records).forEach(r => {
+                if (r.status === "passed") correctCount++;
             });
 
-            setTimeout(() => {
-                confetti({
-                    particleCount: 60,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 }
-                });
-                confetti({
-                    particleCount: 60,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 }
-                });
-            }, 300);
+            // Quy đổi về thang điểm 10
+            const score10 = ((correctCount / totalQ) * 10).toFixed(1);
+            const endTimeStr = pState.endTime || new Date().toISOString();
+
+            document.getElementById("res-part-name").textContent = `${part.code}: ${part.title}`;
+            document.getElementById("res-score-10").textContent = score10;
+            document.getElementById("res-correct-ratio").textContent = `Đúng: ${correctCount} / ${totalQ} câu`;
+            document.getElementById("res-start-time").textContent = formatDateTime(pState.startTime);
+            document.getElementById("res-end-time").textContent = formatDateTime(endTimeStr);
+            document.getElementById("res-duration").textContent = formatDuration(pState.startTime, endTimeStr);
+
+            // Render bảng lịch sử chi tiết từng câu
+            const tbody = document.getElementById("res-history-tbody");
+            tbody.innerHTML = "";
+
+            part.questions.forEach((q, idx) => {
+                const rec = pState.records[idx];
+                const qLabel = part.type === "missing_letter" ? `${q.display} (${q.meaning})` : q.q;
+                const rightAns = part.type === "missing_letter" ? `${q.ans} (${q.fullWord})` : q.ans;
+
+                let userAnsText = "<span class='text-slate-400 italic'>Chưa làm</span>";
+                let statusBadge = "<span class='px-2.5 py-1 rounded-full bg-slate-100 text-slate-500 text-xs'>Chưa làm</span>";
+
+                if (rec) {
+                    userAnsText = rec.userAnswer;
+                    if (rec.status === "passed") {
+                        statusBadge = "<span class='px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 font-black text-xs'>✔ Đúng</span>";
+                    } else {
+                        statusBadge = "<span class='px-2.5 py-1 rounded-full bg-rose-100 text-rose-700 font-black text-xs'>✘ Sai (3 lần)</span>";
+                    }
+                }
+
+                const tr = document.createElement("tr");
+                tr.className = rec ? (rec.status === "passed" ? "bg-emerald-50/30" : "bg-rose-50/40") : "";
+                tr.innerHTML = `
+                    <td class="p-3 text-center font-black text-slate-600">${idx + 1}</td>
+                    <td class="p-3 text-slate-800">${qLabel}</td>
+                    <td class="p-3 ${rec && rec.status === 'passed' ? 'text-emerald-700' : 'text-rose-600'}">${userAnsText}</td>
+                    <td class="p-3 text-indigo-700 font-extrabold">${rightAns}</td>
+                    <td class="p-3 text-center">${statusBadge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById("modal-result").classList.remove("hidden");
+
+            if (correctCount === totalQ) {
+                confetti({ particleCount: 120, spread: 90, origin: { y: 0.5 } });
+            }
         }
 
-        window.onload = function() {
-            createSparkles();
-        };
+        function closeResultModal() {
+            document.getElementById("modal-result").classList.add("hidden");
+        }
+
+        // Khởi chạy ứng dụng
+        initState();
+        renderHome();
     </script>
 </body>
 </html>
